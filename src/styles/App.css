@@ -1,0 +1,50 @@
+.main {
+	display: block;
+}
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+.content {
+	display: block;
+	margin: 0 auto;
+	margin-top: 80px;
+}
+h3,
+div {
+	margin: 0;
+	padding: 0;
+}
+.bg-red {
+	background-color: #c34944;
+}
+.bg-light-red {
+	background-color: #ea6f60;
+}
+.bg-yellow {
+	background-color: #e3b345;
+}
+.bg-gray {
+	background-color: #474646;
+}
+
+.loader {
+	position: absolute;
+	background: rgb(145, 144, 144);
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.spinner {
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	border: 8px solid transparent;
+	border-top-color: #fff;
+	border-bottom-color: #fff;
+	animation: spinner 1s ease infinite;
+}
