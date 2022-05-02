@@ -16,7 +16,6 @@ export default function LoggedRoutes() {
 		<div className="content">
 			<Routes>
 				<Route path="/" element={<Home />} />
-
 				<Route path="dashboard" element={<TeacherDashboard />} />
 				<Route path="students" element={<Students />} />
 				<Route path="login" element={<LogIn />} />

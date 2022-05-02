@@ -40,13 +40,11 @@ export default function SignUp({}) {
 	async function createDocument(uid) {
 		const user = { name: name, email: email };
 		const document = await createDocumentWithId("users", uid, user);
-		console.log("signup1", uid);
 		return document;
 	}
 
 	function onSuccess(uid) {
 		setUID(uid);
-		console.log("signup2", uid);
 		navigation("/login");
 	}
 
