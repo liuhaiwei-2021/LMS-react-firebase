@@ -4,68 +4,64 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Project files
-import { createDocument, createDocumentWithId } from "../scripts/fireStore";
+import { createDocumentWithId } from "../scripts/fireStore";
 import { createUser } from "../scripts/firebaseAuth";
+import { useUID } from "../state/UIDContext";
+import firebaseErrors from "../data/firebaseErrors.json";
 
 import form from "../data/signUpForm.json";
 import InputField from "../components/authentication/InputField";
 import "../styles/SignUp.css";
 
-export default function SignUp({ uidState }) {
-	// const { setUID } = useUID();
+export default function SignUp({}) {
+	const { setUID } = useUID();
 	const navigation = useNavigate();
 
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	// async function onSignUp(event) {
-	// 	event.preventDefault();
+	async function onSignUp(e) {
+		e.preventDefault();
 
-	// 	const uid = await createUID();
-	// 	let user = null;
+		const uid = await createUID().catch(onFail);
+		let user;
 
-	// 	if (uid) {
-	// 		user = await createDocument(uid);
-	// 	}
-
-	// 	if (user) {
-	// 		setUID(uid);
-	// 		navigation("/dashboard");
-	// 	}
-	// }
+		if (uid) user = await createDocument(uid).catch(onFail);
+		if (user) onSuccess(uid);
+	}
 
 	async function createUID() {
-		const payload = await createUser(email, password);
-		const { data, error } = payload;
-
-		if (error) {
-			onFailure(data);
-			return;
-		} else return data;
+		const result = await createUser(email, password);
+		const uid = result.data;
+		return uid;
 	}
 
 	async function createDocument(uid) {
-		const user = { name: name };
-		const payload = await createDocumentWithId("users", uid, user);
-		const { data, error } = payload;
-
-		if (error) {
-			onFailure(data);
-			return;
-		} else return data;
+		const user = { name: name, email: email };
+		const document = await createDocumentWithId("users", uid, user);
+		console.log("signup1", uid);
+		return document;
 	}
 
-	function onFailure(errorText) {
-		console.error(errorText);
-		alert(`Sorry something happened: ${errorText}`);
+	function onSuccess(uid) {
+		setUID(uid);
+		console.log("signup2", uid);
+		navigation("/login");
+	}
+
+	function onFail(error) {
+		const message = firebaseErrors[error.code] || firebaseErrors["default"];
+
+		console.error(error.code);
+		alert(message);
 	}
 
 	return (
 		<div className="sign-up">
 			<h1>Sign Up</h1>
 			<h2>Start choose your future today!</h2>
-			<form>
+			<form onSubmit={onSignUp}>
 				<InputField setup={form.name} state={[name, setName]} />
 				<InputField setup={form.email} state={[email, setEmail]} />
 				<InputField setup={form.password} state={[password, setPassword]} />

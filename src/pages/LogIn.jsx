@@ -39,7 +39,7 @@ export default function SignUp({ uidState }) {
 			<form>
 				<InputField setup={form.email} state={[email, setEmail]} />
 				<InputField setup={form.password} state={[password, setPassword]} />
-				<button className="btn-sign-up">SIGN UP</button>
+				<button className="btn-sign-up">LOG IN</button>
 			</form>
 			<p>
 				<Link to="/recover">Forget your password?</Link>

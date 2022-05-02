@@ -24,10 +24,12 @@ export async function createDocument(path, data) {
 
 export async function createDocumentWithId(path, id, data) {
 	let payload = { data: undefined, error: false };
+	console.log(id);
 
 	try {
 		const documentReference = doc(fireStore, path, id);
 		await setDoc(documentReference, data);
+		console.log("createDocumentWithId2", data);
 
 		payload = { data: `Document with id ${id} created!`, error: false };
 	} catch (error) {
