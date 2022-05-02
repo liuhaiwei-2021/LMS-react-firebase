@@ -38,7 +38,7 @@ export default function SignUp({}) {
 	}
 
 	async function createDocument(uid) {
-		const user = { name: name, email: email };
+		const user = { name: name, email: email, isTeacher: false };
 		const document = await createDocumentWithId("users", uid, user);
 		return document;
 	}
