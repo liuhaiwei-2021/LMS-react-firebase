@@ -20,8 +20,8 @@ export default function LoggedRoutes() {
 				<Route path="dashboard" element={<TeacherDashboard />} />
 				<Route path="students" element={<Students />} />
 				<Route path="login" element={<LogIn />} />
-				<Route path="recover-password" element={<RecoverPassword />} />
-				<Route path="sign-up" element={<SignUp />} />
+				<Route path="recover" element={<RecoverPassword />} />
+				<Route path="signup" element={<SignUp />} />
 				<Route path="profile" element={<Profile />} />
 			</Routes>
 		</div>
