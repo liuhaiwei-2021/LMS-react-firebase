@@ -8,7 +8,7 @@ import { createDocument, createDocumentWithId } from "../scripts/fireStore";
 import { createUser } from "../scripts/firebaseAuth";
 
 import form from "../data/signUpForm.json";
-import InputField from "../components/InputField";
+import InputField from "../components/authentication/InputField";
 import "../styles/SignUp.css";
 
 export default function SignUp({ uidState }) {

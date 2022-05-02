@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Project files
 
 import form from "../data/loginForm.json";
-import InputField from "../components/InputField";
+import InputField from "../components/authentication/InputField";
 import "../styles/SignUp.css";
 
 export default function SignUp({ uidState }) {

@@ -1,27 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import NotFound from "./pages/NotFound";
+import LoggedRoutes from "./routes/LoggedRoutes";
+import UnloggedRoutes from "./routes/UnloggedRoutes";
+import { useUID } from "./state/UIDContext";
 import "./styles/App.css";
 
-import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
-import LogIn from "./pages/LogIn";
-import RecoverPassword from "./pages/RecoverPassword";
-
 function App() {
+	// Global state
+	const { uid } = useUID();
 	return (
 		<div className="main">
 			<BrowserRouter>
-				<div className="content">
-					<Routes>
-						<Route path="/" element={<Home />} exact />
-						<Route path="/signup" element={<SignUp />} exact />
-						<Route path="/login" element={<LogIn />} exact />
-						<Route path="/recover" element={<RecoverPassword />} exact />
-
-						<Route path="*" element={<NotFound />} />
-					</Routes>
-				</div>
+				{uid && <LoggedRoutes />}
+				{!uid && <UnloggedRoutes />}
 			</BrowserRouter>
 		</div>
 	);
