@@ -9,7 +9,7 @@ export default function Hero() {
 		<section className="hero">
 			<img className="hero-image" src="/images/love-to-learn.jpg" alt="hero" />
 			<div className="hero-text">
-				<h1 className="restaurant-title">Mind Match</h1>
+				<h1 className="hero-title">Mind Match</h1>
 				<img src="/images/logo.png" alt="logo" />
 				<h3 className="slogan">Unlock the power of you</h3>
 				<button className="view-btn" onClick={() => navigate("/signup")}>

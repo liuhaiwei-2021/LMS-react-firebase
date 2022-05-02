@@ -8,9 +8,9 @@
 	align-items: center;
 	overflow: hidden;
 }
-.restaurant-title {
+.hero-title {
 	font-size: xx-large;
-	font-weight: 900;
+	font-weight: 400;
 	letter-spacing: 10px;
 }
 .hero-image {
@@ -21,6 +21,9 @@
 	position: absolute;
 	opacity: 0.45;
 	z-index: 1;
+}
+.slogan {
+	font-weight: 400;
 }
 .hero-text {
 	grid-column-start: 2;
@@ -33,10 +36,7 @@
 	font-size: 24px;
 	z-index: 1000;
 }
-.subtitle {
-	color: #c34944;
-	font-weight: 700;
-}
+
 .view-btn {
 	display: block;
 	width: 200px;
