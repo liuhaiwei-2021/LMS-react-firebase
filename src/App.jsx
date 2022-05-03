@@ -2,7 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import LoggedRoutes from "./routes/LoggedRoutes";
 import UnloggedRoutes from "./routes/UnloggedRoutes";
-import { useAuth } from "./state/AuthProvider";
+import { useAuth } from "./state/AuthContext";
 import "./styles/App.css";
 
 function App() {

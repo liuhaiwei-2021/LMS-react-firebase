@@ -4,8 +4,8 @@ import { useNavigate, Link } from "react-router-dom";
 
 // Project files
 import { loginUser } from "../scripts/firebaseAuth";
-import { useAuth } from "../state/AuthProvider";
-import { useUser } from "../state/UserProvider";
+import { useAuth } from "../state/AuthContext";
+import { useUser } from "../state/UserContext";
 import { readDocument } from "../scripts/fireStore";
 
 import form from "../data/loginForm.json";

@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 // Project files
 import { createDocumentWithId } from "../scripts/fireStore";
 import { createUser } from "../scripts/firebaseAuth";
-import { useAuth } from "../state/AuthProvider";
-import { useUser } from "../state/UserProvider";
+import { useAuth } from "../state/AuthContext";
+import { useUser } from "../state/UserContext";
 
 import firebaseErrors from "../data/firebaseErrors.json";
 import form from "../data/signUpForm.json";

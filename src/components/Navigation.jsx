@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 //Project files
 import { logOut } from "../scripts/firebaseAuth";
-import { useAuth } from "../state/AuthProvider";
-import { useUser } from "../state/UserProvider";
+import { useAuth } from "../state/AuthContext";
+import { useUser } from "../state/UserContext";
 import Loader from "../scripts/Loader";
 import "../styles/Navigation.css";
 
@@ -17,7 +17,7 @@ function Navigation() {
 
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = loggedIn ? "LOG UT" : "";
+	const toggleLabel = loggedIn ? "LOG UT" : "log in";
 
 	// Methods
 	async function onLogout() {

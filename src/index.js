@@ -6,8 +6,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/index.css";
 
-import { AuthProvider } from "./state/AuthProvider";
-import { UserProvider } from "./state/UserProvider";
+import { AuthProvider } from "./state/AuthContext";
+import { UserProvider } from "./state/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

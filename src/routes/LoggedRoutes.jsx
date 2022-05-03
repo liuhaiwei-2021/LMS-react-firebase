@@ -13,19 +13,17 @@ import Home from "../pages/Home";
 
 export default function LoggedRoutes() {
 	return (
-		<div className="main">
+		<>
 			<Navigation />
-			<div>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/login" element={<LogIn />} />
-					<Route path="/signup" element={<SignUp />} />
-					<Route path="/dashboard" element={<Dashboard />} />
-					<Route path="/student" element={<Student />} />
-					<Route path="/teacher" element={<Teacher />} />
-					<Route path="profile" element={<Profile />} />
-				</Routes>
-			</div>
-		</div>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<LogIn />} />
+				<Route path="/signup" element={<SignUp />} />
+				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/student" element={<Student />} />
+				<Route path="/teacher" element={<Teacher />} />
+				<Route path="profile" element={<Profile />} />
+			</Routes>
+		</>
 	);
 }
