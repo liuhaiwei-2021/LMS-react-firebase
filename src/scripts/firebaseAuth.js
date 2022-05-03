@@ -3,6 +3,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	sendPasswordResetEmail,
+	signOut,
 } from "firebase/auth";
 
 // Project file
@@ -47,6 +48,19 @@ export async function recoverUser(email) {
 	try {
 		await sendPasswordResetEmail(authentification, email);
 		payload.data = "Email sent";
+	} catch (error) {
+		payload = { data: error, error: true };
+	}
+
+	return payload;
+}
+
+export async function logOut() {
+	let payload = { data: true, error: false };
+
+	try {
+		await signOut(authentification);
+		payload.data = false;
 	} catch (error) {
 		payload = { data: error, error: true };
 	}

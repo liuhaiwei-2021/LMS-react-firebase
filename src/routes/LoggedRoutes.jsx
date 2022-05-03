@@ -2,27 +2,25 @@
 import { Routes, Route } from "react-router-dom";
 
 // Project files
-
-import TeacherDashboard from "../components/teacher/TeacherDashboard";
-import Students from "../pages/Students";
-import Home from "../pages/Home";
-import LogIn from "../pages/LogIn";
-import RecoverPassword from "../pages/RecoverPassword";
-import SignUp from "../pages/SignUp";
+import Navigation from "../components/Navigation";
+import Dashboard from "../components/Dashboard";
 import Profile from "../components/profile/Profile";
+import Student from "../pages/Student";
+import LogIn from "../pages/LogIn";
 
 export default function LoggedRoutes() {
 	return (
-		<div className="content">
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="dashboard" element={<TeacherDashboard />} />
-				<Route path="students" element={<Students />} />
-				<Route path="login" element={<LogIn />} />
-				<Route path="recover" element={<RecoverPassword />} />
-				<Route path="signup" element={<SignUp />} />
-				<Route path="profile" element={<Profile />} />
-			</Routes>
+		<div className="main">
+			<Navigation />
+			<div className="content container">
+				<Routes>
+					<Route path="/" element={<Dashboard />} />
+					<Route path="/login" element={<LogIn />} />
+					<Route path="dashboard" element={<Dashboard />} />
+					<Route path="student" element={<Student />} />
+					<Route path="profile" element={<Profile />} />
+				</Routes>
+			</div>
 		</div>
 	);
 }

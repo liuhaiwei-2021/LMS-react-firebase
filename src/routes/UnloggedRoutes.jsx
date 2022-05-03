@@ -13,9 +13,9 @@ export default function UnloggedRoutes() {
 		<div className="content">
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="login" element={<LogIn />} />
-				<Route path="recover" element={<RecoverPassword />} />
-				<Route path="signup" element={<SignUp />} />
+				<Route path="/login" element={<LogIn />} />
+				<Route path="/recover" element={<RecoverPassword />} />
+				<Route path="/signup" element={<SignUp />} />
 				<Route path="*" element={<NotLogged />} />
 			</Routes>
 		</div>

@@ -9,10 +9,15 @@ import InputField from "../components/authentication/InputField";
 import "../styles/SignUp.css";
 import firebaseErrors from "../data/firebaseErrors.json";
 import { loginUser } from "../scripts/firebaseAuth";
-import { useUID } from "../state/UIDContext";
+import { useAuth } from "../state/AuthProvider";
+import { useUser } from "../state/UserProvider";
+import { readDocument } from "../scripts/fireStore";
+
+//file packages
 
 export default function SignUp({}) {
-	const { setUID } = useUID();
+	const { setUser } = useUser();
+	const { loggedIn, setLoggedIn, uid } = useAuth();
 	const navigation = useNavigate();
 
 	// Local state
@@ -28,8 +33,10 @@ export default function SignUp({}) {
 		if (uid) onSucess(uid);
 	}
 
-	function onSucess(data) {
-		setUID(data);
+	async function onSucess(data) {
+		const payload = await readDocument("users", uid);
+		setUser(payload.data);
+		setLoggedIn(true);
 		navigation("/dashboard");
 	}
 

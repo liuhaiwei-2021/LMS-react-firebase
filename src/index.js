@@ -5,11 +5,15 @@ import ReactDOM from "react-dom/client";
 //Project files
 import App from "./App";
 import "./styles/index.css";
-import { UIDProvider } from "./state/UIDContext";
+
+import { AuthProvider } from "./state/AuthProvider";
+import { UserProvider } from "./state/UserProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<UIDProvider>
-		<App />
-	</UIDProvider>
+	<AuthProvider>
+		<UserProvider>
+			<App />
+		</UserProvider>
+	</AuthProvider>
 );

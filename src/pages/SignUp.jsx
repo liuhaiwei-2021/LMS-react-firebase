@@ -6,15 +6,16 @@ import { Link } from "react-router-dom";
 // Project files
 import { createDocumentWithId } from "../scripts/fireStore";
 import { createUser } from "../scripts/firebaseAuth";
-import { useUID } from "../state/UIDContext";
+import { useAuth } from "../state/AuthProvider";
+import { useUser } from "../state/UserProvider";
 import firebaseErrors from "../data/firebaseErrors.json";
-
 import form from "../data/signUpForm.json";
 import InputField from "../components/authentication/InputField";
 import "../styles/SignUp.css";
 
 export default function SignUp({}) {
-	const { setUID } = useUID();
+	const { loggedIn, setLoggedIn, uid, setUID } = useAuth();
+	const { setUser } = useUser();
 	const navigation = useNavigate();
 
 	const [name, setName] = useState("");

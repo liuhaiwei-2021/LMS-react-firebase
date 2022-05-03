@@ -2,12 +2,12 @@ import { BrowserRouter } from "react-router-dom";
 
 import LoggedRoutes from "./routes/LoggedRoutes";
 import UnloggedRoutes from "./routes/UnloggedRoutes";
-import { useUID } from "./state/UIDContext";
+import { useAuth } from "./state/AuthProvider";
 import "./styles/App.css";
 
 function App() {
 	// Global state
-	const { uid } = useUID();
+	const { uid } = useAuth();
 	return (
 		<div className="main">
 			<BrowserRouter>
