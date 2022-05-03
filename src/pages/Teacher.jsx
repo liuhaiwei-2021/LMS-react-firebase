@@ -1,10 +1,10 @@
-function Teacher() {
+import CourseList from "../components/shared/CourseList";
+
+export default function Teacher() {
 	return (
-		<div>
-			<section>courseList</section>
-			<section>studentList</section>
+		<div className="container">
+			<h1>teacher page</h1>
+			<CourseList />
 		</div>
 	);
 }
-
-export default Teacher;
