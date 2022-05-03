@@ -8,26 +8,30 @@ import { createDocumentWithId } from "../scripts/fireStore";
 import { createUser } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthProvider";
 import { useUser } from "../state/UserProvider";
+
 import firebaseErrors from "../data/firebaseErrors.json";
 import form from "../data/signUpForm.json";
 import InputField from "../components/authentication/InputField";
 import "../styles/SignUp.css";
 
 export default function SignUp({}) {
+	//Global state
 	const { loggedIn, setLoggedIn, uid, setUID } = useAuth();
 	const { setUser } = useUser();
-	const navigation = useNavigate();
 
+	//Local state
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	//properties
+	const navigation = useNavigate();
 
 	async function onSignUp(e) {
 		e.preventDefault();
 
 		const uid = await createUID().catch(onFail);
 		let user;
-
 		if (uid) user = await createDocument(uid).catch(onFail);
 		if (user) onSuccess(uid);
 	}
