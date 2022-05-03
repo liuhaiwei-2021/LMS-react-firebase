@@ -3,33 +3,32 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 // Project files
-
-import form from "../data/loginForm.json";
-import InputField from "../components/authentication/InputField";
-import "../styles/SignUp.css";
-import firebaseErrors from "../data/firebaseErrors.json";
 import { loginUser } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthProvider";
 import { useUser } from "../state/UserProvider";
 import { readDocument } from "../scripts/fireStore";
 
-//file packages
+import form from "../data/loginForm.json";
+import InputField from "../components/authentication/InputField";
+import firebaseErrors from "../data/firebaseErrors.json";
+import "../styles/SignUp.css";
 
 export default function SignUp({}) {
+	//Global state
 	const { setUser } = useUser();
-	const { loggedIn, setLoggedIn, uid } = useAuth();
-	const navigation = useNavigate();
+	const { setLoggedIn, uid } = useAuth();
 
 	// Local state
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+	//properties
+	const navigation = useNavigate();
+
 	// Method
 	async function onLogin(e) {
 		e.preventDefault();
-
 		const uid = await loginUser(email, password).catch(onFail);
-
 		if (uid) onSucess(uid);
 	}
 
@@ -37,12 +36,11 @@ export default function SignUp({}) {
 		const payload = await readDocument("users", uid);
 		setUser(payload.data);
 		setLoggedIn(true);
-		navigation("/dashboard");
+		navigation("/teacher");
 	}
 
 	function onFail(error) {
 		const message = firebaseErrors[error.code] || firebaseErrors["default"];
-
 		console.error(error.code);
 		alert(message);
 	}
