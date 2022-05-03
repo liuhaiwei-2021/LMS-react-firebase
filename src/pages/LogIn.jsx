@@ -11,6 +11,7 @@ import { readDocument } from "../scripts/fireStore";
 import form from "../data/loginForm.json";
 import InputField from "../components/authentication/InputField";
 import firebaseErrors from "../data/firebaseErrors.json";
+import Loader from "../scripts/Loader";
 import "../styles/SignUp.css";
 
 export default function SignUp({}) {
@@ -21,6 +22,7 @@ export default function SignUp({}) {
 	// Local state
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	// const [status, setStatus] = useState(0);
 
 	//properties
 	const navigation = useNavigate();
@@ -36,12 +38,14 @@ export default function SignUp({}) {
 		const payload = await readDocument("users", uid);
 		setUser(payload.data);
 		setLoggedIn(true);
+
 		navigation("/teacher");
 	}
 
 	function onFail(error) {
 		const message = firebaseErrors[error.code] || firebaseErrors["default"];
-		console.error(error.code);
+		console.log(error.code);
+
 		alert(message);
 	}
 

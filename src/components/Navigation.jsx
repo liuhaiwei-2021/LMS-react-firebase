@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthProvider";
 import { useUser } from "../state/UserProvider";
+import Loader from "../scripts/Loader";
 import "../styles/Navigation.css";
 
 function Navigation() {
@@ -14,12 +15,9 @@ function Navigation() {
 	const { loggedIn, setLoggedIn, uid } = useAuth();
 	const { setUser } = useUser();
 
-	//Local state
-	const [status, setStatus] = useState(0);
-
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = loggedIn ? "LOG UT" : "LOG IN";
+	const toggleLabel = loggedIn ? "LOG UT" : "";
 
 	// Methods
 	async function onLogout() {
@@ -31,15 +29,15 @@ function Navigation() {
 	function onSuccess(data) {
 		setLoggedIn(false);
 		setUser(null);
+
 		alert("you log out");
 		navigation("/login");
-		setStatus(0);
 	}
 
 	function onFail(data) {
 		console.log(data);
-		setStatus(2);
 	}
+
 	return (
 		<div className="nav-bar">
 			<div className="nav-container">

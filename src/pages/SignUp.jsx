@@ -12,6 +12,7 @@ import { useUser } from "../state/UserProvider";
 import firebaseErrors from "../data/firebaseErrors.json";
 import form from "../data/signUpForm.json";
 import InputField from "../components/authentication/InputField";
+import Loader from "../scripts/Loader";
 import "../styles/SignUp.css";
 
 export default function SignUp({}) {
@@ -50,13 +51,14 @@ export default function SignUp({}) {
 
 	function onSuccess(uid) {
 		setUID(uid);
+
 		navigation("/login");
 	}
 
 	function onFail(error) {
 		const message = firebaseErrors[error.code] || firebaseErrors["default"];
-
 		console.error(error.code);
+
 		alert(message);
 	}
 
