@@ -2,20 +2,25 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 //Project files
-import "../styles/Navigation.css";
 import { logOut } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthProvider";
 import { useUser } from "../state/UserProvider";
+import "../styles/Navigation.css";
 
 function Navigation() {
+	//Global state
 	const { loggedIn, setLoggedIn, uid } = useAuth();
 	const { setUser } = useUser();
-	const navigation = useNavigate();
-	const [status, setStatus] = useState(0);
-	const [showCompleted, setShowCompleted] = useState(false);
 
+	//Local state
+	const [status, setStatus] = useState(0);
+
+	//properties
+	const navigation = useNavigate();
 	const toggleLabel = loggedIn ? "LOG UT" : "LOG IN";
+
 	// Methods
 	async function onLogout() {
 		const payload = await logOut();
@@ -46,11 +51,6 @@ function Navigation() {
 				</div>
 
 				<ul className="navbar-items">
-					<li className="nav-item">
-						<NavLink className="nav-link" to="/mylessons" exact="true">
-							My lessons
-						</NavLink>
-					</li>
 					<li className="nav-item">
 						<NavLink className="nav-link" to="/profile" exact="true">
 							Profile
