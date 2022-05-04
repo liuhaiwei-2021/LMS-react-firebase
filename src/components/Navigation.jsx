@@ -7,17 +7,18 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthContext";
 import { useUser } from "../state/UserContext";
+
 // import Loader from "../scripts/Loader";
 import "../styles/Navigation.css";
 
 function Navigation() {
 	//Global state
-	const { loggedIn, setLoggedIn, uid } = useAuth();
+	const { loggedIn, setLoggedIn } = useAuth();
 	const { setUser } = useUser();
 
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = loggedIn ? "LOG UT" : "log in";
+	const toggleLabel = loggedIn ? "LOG UT" : "";
 
 	// Methods
 	async function onLogout() {
@@ -30,7 +31,7 @@ function Navigation() {
 		setLoggedIn(false);
 		setUser(null);
 
-		alert("you log out");
+		alert("Log out successfully!");
 		navigation("/login");
 	}
 
@@ -61,7 +62,9 @@ function Navigation() {
 						</NavLink>
 					</li>
 					<li>
-						<button onClick={onLogout}> {toggleLabel} </button>
+						<span className="toggle" onClick={onLogout}>
+							{toggleLabel}
+						</span>
 					</li>
 				</ul>
 			</div>

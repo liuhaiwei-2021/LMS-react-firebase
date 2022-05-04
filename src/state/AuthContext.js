@@ -8,14 +8,13 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
 	// Local state
 	const [uid, setUID] = useState("");
-	const [user, setUser] = useState({});
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	useEffect(() => {
 		onAuthStateChanged(authentification, (currentUser) => {
 			if (currentUser) {
 				setUID(currentUser.uid);
-				setUser(currentUser);
+				// setUser(currentUser);
 				setLoggedIn(true);
 				console.log(currentUser);
 			}
@@ -23,7 +22,7 @@ export function AuthProvider({ children }) {
 	}, []);
 
 	return (
-		<AuthContext.Provider value={{ uid, setUID, user, setUser, loggedIn, setLoggedIn }}>
+		<AuthContext.Provider value={{ uid, setUID, loggedIn, setLoggedIn }}>
 			{children}
 		</AuthContext.Provider>
 	);
