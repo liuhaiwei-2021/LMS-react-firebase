@@ -29,7 +29,7 @@ export async function createUser(email, password) {
 }
 
 export async function loginUser(email, password) {
-	let payload = { uid: "", error: null, loading: true };
+	let payload = { uid: "", errMessage: "", loading: true };
 
 	try {
 		const userCredential = await signInWithEmailAndPassword(authentification, email, password);
@@ -38,8 +38,8 @@ export async function loginUser(email, password) {
 		console.log("fireauth", payload);
 		payload.loading = false;
 	} catch (error) {
-		payload.error = error.message;
-		console.log("fireauth error", error);
+		payload.errMessage = error.message;
+		console.log("fireauth error", payload.errMessage);
 		payload.loading = false;
 	}
 

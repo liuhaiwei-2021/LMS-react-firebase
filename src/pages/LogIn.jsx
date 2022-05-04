@@ -31,11 +31,11 @@ export default function SignUp({}) {
 	async function onLogin(e) {
 		e.preventDefault();
 		const payload = await loginUser(email, password);
-		const { uid, error, loading } = payload;
+		const { uid, errMessage, loading } = payload;
 		console.log("login payload", payload);
 		setUID(uid);
 		if (uid) onSucess(uid);
-		if (error) onFail(error);
+		if (errMessage != "") onFail(errMessage);
 	}
 
 	async function onSucess(data) {
@@ -47,11 +47,8 @@ export default function SignUp({}) {
 		// user.isTeacher ? navigation("/teacher") : navigation("/student");
 	}
 
-	function onFail(error) {
-		const message = firebaseErrors[error.code] || firebaseErrors["default"];
-		console.log(error.code);
-		setLoggedIn(false);
-		alert(message);
+	function onFail(errMessage) {
+		alert(errMessage); //need transform to friend word
 	}
 
 	return (
