@@ -55,21 +55,13 @@ export async function readDocument(path, id) {
 }
 
 export async function readCollection(path) {
-	let payload = { data: undefined, error: false };
+	const collectionPath = collection(fireStore, path);
+	const snapshot = await getDocs(collectionPath);
+	const documents = snapshot.docs.map((item) => {
+		return { id: item.id, ...item.data() };
+	});
 
-	try {
-		const collectionPath = collection(fireStore, path);
-		const snapshot = await getDocs(collectionPath);
-		const documents = snapshot.docs.map((item) => {
-			return { id: item.id, ...item.data() };
-		});
-
-		payload = { data: documents, error: false };
-	} catch (error) {
-		payload = { data: error, error: true };
-	}
-
-	return payload;
+	return documents;
 }
 
 // -- Update

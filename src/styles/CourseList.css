@@ -26,7 +26,7 @@
 	object-fit: cover;
 	padding: 0;
 	margin: 4px;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 }
 .course-card-img:hover {
 	transform: scale(1.5);

@@ -1,6 +1,4 @@
-import React from "react";
-
-function Profile({ user }) {
+export default function Profile({ user }) {
 	const { name, email, isTeacher } = user;
 	return (
 		<div class="card">
@@ -27,5 +25,3 @@ function Profile({ user }) {
 		</div>
 	);
 }
-
-export default Profile;
