@@ -43,8 +43,8 @@ export default function SignUp({}) {
 		setUser(payload.data);
 		console.log("onSucess login", payload);
 		setLoggedIn(true);
-		// navigation("/teacher");
-		user.isTeacher ? navigation("/teacher") : navigation("/student");
+		navigation("/teacher");
+		// user.isTeacher ? navigation("/teacher") : navigation("/student");
 	}
 
 	function onFail(error) {

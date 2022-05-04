@@ -24,7 +24,7 @@ export default function LoggedRoutes() {
 				<Route path="/courses/:id" element={<Course />} />
 				<Route path="/student" element={<Student />} />
 				<Route path="/teacher" element={<Teacher />} />
-				<Route path="profile" element={<Profile />} />
+				<Route path="/profile" element={<Profile />} />
 			</Routes>
 		</>
 	);
