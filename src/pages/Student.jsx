@@ -1,5 +1,11 @@
+import CourseList from "../components/shared/CourseList";
+
 function student() {
-	return <div>students</div>;
+	return (
+		<div className="student container">
+			<CourseList />
+		</div>
+	);
 }
 
 export default student;

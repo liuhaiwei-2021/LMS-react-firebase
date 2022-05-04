@@ -1,5 +1,7 @@
 import StudentCard from "./StudentCard";
 import useFetch from "../../hooks/useFetch";
+import Loader from "../../scripts/Loader";
+import Error from "../shared/Error";
 import "../../styles/CourseList.css";
 
 export default function StudentList() {
@@ -14,7 +16,9 @@ export default function StudentList() {
 	));
 	return (
 		<div className="course-list">
-			<h1>Course List</h1>
+			{loading && <Loader />}
+			{error && <Error />}
+			<h1>Student List</h1>
 			<div className="course-group">{Students}</div>
 		</div>
 	);
