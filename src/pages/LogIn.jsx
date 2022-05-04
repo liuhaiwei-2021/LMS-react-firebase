@@ -30,19 +30,21 @@ export default function SignUp({}) {
 	// Method
 	async function onLogin(e) {
 		e.preventDefault();
-		const uid = await loginUser(email, password).catch(onFail);
-		console.log("login uid", uid);
+		const payload = await loginUser(email, password);
+		const { uid, error, loading } = payload;
+		console.log("login payload", payload);
 		setUID(uid);
 		if (uid) onSucess(uid);
+		if (error) onFail(error);
 	}
 
 	async function onSucess(data) {
-		const payload = await readDocument("users", uid);
+		const payload = await readDocument("users", data);
 		setUser(payload.data);
-		console.log("login data", user);
+		console.log("onSucess login", payload);
 		setLoggedIn(true);
-		navigation("/teacher");
-		// user.isTeacher ? navigation("/teacher") : navigation("/student");
+		// navigation("/teacher");
+		user.isTeacher ? navigation("/teacher") : navigation("/student");
 	}
 
 	function onFail(error) {

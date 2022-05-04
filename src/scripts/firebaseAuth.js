@@ -1,6 +1,5 @@
 // NPM Packages
 import {
-	getAuth,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	sendPasswordResetEmail,
@@ -30,15 +29,18 @@ export async function createUser(email, password) {
 }
 
 export async function loginUser(email, password) {
-	const auth = getAuth();
-	let payload = { data: undefined, error: false };
+	let payload = { uid: "", error: null, loading: true };
 
 	try {
-		const userCredential = await signInWithEmailAndPassword(auth, email, password);
+		const userCredential = await signInWithEmailAndPassword(authentification, email, password);
 
-		payload.data = userCredential.user.uid;
+		payload.uid = userCredential.user.uid;
+		console.log("fireauth", payload);
+		payload.loading = false;
 	} catch (error) {
-		payload = { data: error, error: true };
+		payload.error = error.message;
+		console.log("fireauth error", error);
+		payload.loading = false;
 	}
 
 	return payload;
