@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 // Project files
 import { loginUser } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthContext";
-import { useUser } from "../state/UserContext";
+
 import { readDocument } from "../scripts/fireStore";
 
 import form from "../data/loginForm.json";
@@ -16,8 +16,7 @@ import "../styles/SignUp.css";
 
 export default function SignUp({}) {
 	//Global state
-	const { setUser } = useUser();
-	const { setLoggedIn, uid } = useAuth();
+	const { setLoggedIn, uid, setUID, user, setUser } = useAuth();
 
 	// Local state
 	const [email, setEmail] = useState("");
@@ -31,6 +30,7 @@ export default function SignUp({}) {
 	async function onLogin(e) {
 		e.preventDefault();
 		const uid = await loginUser(email, password).catch(onFail);
+		setUID(uid);
 		if (uid) onSucess(uid);
 	}
 
@@ -38,14 +38,13 @@ export default function SignUp({}) {
 		const payload = await readDocument("users", uid);
 		setUser(payload.data);
 		setLoggedIn(true);
-
 		navigation("/teacher");
 	}
 
 	function onFail(error) {
 		const message = firebaseErrors[error.code] || firebaseErrors["default"];
 		console.log(error.code);
-
+		setLoggedIn(false);
 		alert(message);
 	}
 

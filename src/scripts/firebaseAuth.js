@@ -1,5 +1,6 @@
 // NPM Packages
 import {
+	getAuth,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	sendPasswordResetEmail,
@@ -29,10 +30,11 @@ export async function createUser(email, password) {
 }
 
 export async function loginUser(email, password) {
+	const auth = getAuth();
 	let payload = { data: undefined, error: false };
 
 	try {
-		const userCredential = await signInWithEmailAndPassword(authentification, email, password);
+		const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
 		payload.data = userCredential.user.uid;
 	} catch (error) {

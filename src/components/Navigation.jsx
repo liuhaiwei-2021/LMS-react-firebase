@@ -36,6 +36,7 @@ function Navigation() {
 
 	function onFail(data) {
 		console.log(data);
+		alert("logut failed");
 	}
 
 	return (

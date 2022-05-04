@@ -8,17 +8,22 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
 	// Local state
 	const [uid, setUID] = useState("");
+	const [user, setUser] = useState({});
 	const [loggedIn, setLoggedIn] = useState(false);
 
 	useEffect(() => {
-		onAuthStateChanged(authentification, (user) => {
-			if (user) setUID(user.uid);
-			else setUID("no user");
+		onAuthStateChanged(authentification, (currentUser) => {
+			if (currentUser) {
+				setUID(currentUser.uid);
+				setUser(currentUser);
+				setLoggedIn(true);
+				console.log(currentUser);
+			}
 		});
 	}, []);
 
 	return (
-		<AuthContext.Provider value={{ uid, setUID, loggedIn, setLoggedIn }}>
+		<AuthContext.Provider value={{ uid, setUID, user, setUser, loggedIn, setLoggedIn }}>
 			{children}
 		</AuthContext.Provider>
 	);

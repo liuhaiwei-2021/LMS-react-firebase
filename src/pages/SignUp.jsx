@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { createDocumentWithId } from "../scripts/fireStore";
 import { createUser } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthContext";
-import { useUser } from "../state/UserContext";
 
 import firebaseErrors from "../data/firebaseErrors.json";
 import form from "../data/signUpForm.json";
@@ -17,8 +16,7 @@ import "../styles/SignUp.css";
 
 export default function SignUp({}) {
 	//Global state
-	const { loggedIn, setLoggedIn, uid, setUID } = useAuth();
-	const { setUser } = useUser();
+	const { loggedIn, setLoggedIn, uid, setUID, user, setUserx } = useAuth();
 
 	//Local state
 	const [name, setName] = useState("");
