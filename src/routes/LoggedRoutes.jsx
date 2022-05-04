@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 // Project files
 import Navigation from "../components/Navigation";
-import Profile from "../components/profile/Profile";
+import Course from "../components/shared/Course";
+import Profile from "../pages/Profile";
 import Student from "../pages/Student";
 import Teacher from "../pages/Teacher";
 import LogIn from "../pages/LogIn";
@@ -18,6 +19,7 @@ export default function LoggedRoutes() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<LogIn />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/courses/:id" element={<Course />} />
 				<Route path="/student" element={<Student />} />
 				<Route path="/teacher" element={<Teacher />} />
 				<Route path="profile" element={<Profile />} />

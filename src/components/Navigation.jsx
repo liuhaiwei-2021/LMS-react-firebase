@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { logOut } from "../scripts/firebaseAuth";
 import { useAuth } from "../state/AuthContext";
 import { useUser } from "../state/UserContext";
-import Loader from "../scripts/Loader";
+// import Loader from "../scripts/Loader";
 import "../styles/Navigation.css";
 
 function Navigation() {
@@ -55,7 +55,9 @@ function Navigation() {
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink className="nav-link" to="/profile" exact="true"></NavLink>
+						<NavLink className="nav-link" to="management" exact="true">
+							Management
+						</NavLink>
 					</li>
 					<li>
 						<button onClick={onLogout}> {toggleLabel} </button>
