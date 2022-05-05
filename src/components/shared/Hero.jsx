@@ -1,10 +1,10 @@
+//NPM packages
 import { useNavigate } from "react-router-dom";
 
 //Project files
-import "../styles/Hero.css";
+import "../../styles/Hero.css";
 
 export default function Hero() {
-	const navigate = useNavigate();
 	return (
 		<section className="hero">
 			<img className="hero-image" src="/images/love-to-learn.jpg" alt="hero" />

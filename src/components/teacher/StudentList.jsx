@@ -1,12 +1,13 @@
 //Project files
-import StudentCard from "./StudentCard";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../scripts/Loader";
 import Error from "../shared/Error";
+import StudentCard from "./StudentCard";
 
 export default function StudentList() {
 	const { data: users, loading, error } = useFetch("users");
 
+	//need fix
 	const students = users;
 	// filter((item) => {});
 	// console.log(students);
@@ -14,6 +15,7 @@ export default function StudentList() {
 	const Students = students.map((student, index) => (
 		<StudentCard key={index} student={student} />
 	));
+
 	return (
 		<div className="list">
 			{loading && <Loader />}

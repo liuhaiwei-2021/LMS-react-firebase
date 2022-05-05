@@ -33,7 +33,6 @@ export default function LogIn({}) {
 		e.preventDefault();
 		const payload = await loginUser(email, password);
 		const { uid, errMessage, loading } = payload;
-		console.log("login payload", payload);
 		setUID(uid);
 		if (uid) onSucess(uid);
 		if (errMessage !== "") onFail(errMessage);
@@ -46,7 +45,6 @@ export default function LogIn({}) {
 		setLoggedIn(true);
 		setEmail("");
 		setPassword("");
-		// navigation(from, { replace: true });
 		navigation("/dashboard");
 	}
 
@@ -56,6 +54,7 @@ export default function LogIn({}) {
 
 	return (
 		<div className="sign-up">
+			{/* {loading && <Loader />} */}
 			<h1>Log In</h1>
 			<h2>Start choose your future today!</h2>
 			<form onSubmit={onLogin}>

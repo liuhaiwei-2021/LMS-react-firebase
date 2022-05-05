@@ -1,3 +1,4 @@
+//NPM packages
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {

@@ -1,8 +1,9 @@
 //NPM packages
 import { useEffect } from "react";
+
 //Project files
 import { useCourses } from "../../state/CoursesContext";
-import useFetch from "../../hooks/useFetch.js";
+import useFetch from "../../hooks/useFetch";
 import CourseCard from "./CourseCard";
 import Loader from "../../scripts/Loader";
 import Error from "./Error";

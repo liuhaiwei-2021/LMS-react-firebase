@@ -19,7 +19,6 @@ export function UserProvider({ children }) {
 	useEffect(() => saveData());
 
 	// Methods
-
 	return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 }
 
