@@ -17,6 +17,7 @@ import Navigation from "./components/Navigation";
 import Profile from "./pages/Profile";
 import Management from "./pages/Management";
 import "./styles/App.css";
+import DashBoard from "./pages/Teacher";
 
 function App() {
 	const ROLES = {
@@ -38,8 +39,10 @@ function App() {
 
 					{/* we want to protect these routes */}
 					<Route element={<RequireAuth allowedRoles={[ROLES.Student, ROLES.Teacher]} />}>
+						<Route path="/dashboard" element={<DashBoard />} />
 						<Route path="/profile" element={<Profile />} />
 						<Route path="/courses/:id" element={<Course />} />
+
 						<Route path="/student" element={<Student />} />
 					</Route>
 
@@ -49,7 +52,7 @@ function App() {
 					</Route>
 
 					{/* catch all */}
-					<Route path="*" element={<Missing />} />
+					{/* <Route path="*" element={<Missing />} /> */}
 				</Route>
 			</Routes>
 		</>

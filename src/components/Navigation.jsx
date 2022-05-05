@@ -15,8 +15,8 @@ function Navigation() {
 	//Global state
 	const { setLoggedIn } = useAuth();
 	const { user, setUser } = useUser();
-	console.log("navigation", user?.roles);
-	const admin = user?.roles.find((role) => role === 2);
+
+	const admin = user?.roles?.find((role) => role === 2);
 
 	//properties
 	const navigation = useNavigate();
@@ -53,11 +53,13 @@ function Navigation() {
 				</div>
 
 				<ul className="navbar-items">
-					<li className="nav-item">
-						<NavLink className="nav-link" to="/profile" exact="true">
-							Profile
-						</NavLink>
-					</li>
+					{user && (
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/profile" exact="true">
+								Profile
+							</NavLink>
+						</li>
+					)}
 					{admin && (
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/management" exact="true">

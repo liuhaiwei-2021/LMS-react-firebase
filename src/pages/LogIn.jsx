@@ -47,7 +47,7 @@ export default function LogIn({}) {
 		setEmail("");
 		setPassword("");
 		navigation(from, { replace: true });
-		navigation("/");
+		navigation("/dashboard");
 	}
 
 	function onFail(errMessage) {

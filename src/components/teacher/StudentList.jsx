@@ -9,7 +9,8 @@ export default function StudentList() {
 	const { data: users, loading, error } = useFetch("users");
 
 	const students = users.filter((item) => {
-		return item.isTeacher === false;
+		item.roles.length = 1;
+		return item;
 	});
 
 	const Students = students.map((student, index) => (
@@ -20,7 +21,7 @@ export default function StudentList() {
 			{loading && <Loader />}
 			{error && <Error />}
 			<h1>Student List</h1>
-			<div className="course-group">{Students}</div>
+			<div className="student-group">{Students}</div>
 		</div>
 	);
 }
