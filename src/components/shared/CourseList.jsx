@@ -23,11 +23,11 @@ export default function CourseList() {
 	const Courses = courses.map((course, index) => <CourseCard key={index} course={course} />);
 
 	return (
-		<div className="course-list">
+		<div className="list">
 			{loading && <Loader />}
 			{error && <Error />}
-			<h1>Course List</h1>
-			<div className="course-group">{Courses}</div>
+			<h4>Course List</h4>
+			<div className="card-group">{Courses}</div>
 		</div>
 	);
 }

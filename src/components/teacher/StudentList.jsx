@@ -8,20 +8,19 @@ import "../../styles/CourseList.css";
 export default function StudentList() {
 	const { data: users, loading, error } = useFetch("users");
 
-	const students = users.filter((item) => {
-		item.roles.length = 1;
-		return item;
-	});
+	const students = users;
+	// filter((item) => {});
+	// console.log(students);
 
 	const Students = students.map((student, index) => (
 		<StudentCard key={index} student={student} />
 	));
 	return (
-		<div className="course-list">
+		<div className="list">
 			{loading && <Loader />}
 			{error && <Error />}
-			<h1>Student List</h1>
-			<div className="student-group">{Students}</div>
+			<h4>Student List</h4>
+			<div className="card-group">{Students}</div>
 		</div>
 	);
 }

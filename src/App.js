@@ -12,12 +12,12 @@ import Unauthorized from "./components/Unauthorized";
 import Layout from "./components/Layout";
 import Course from "./components/shared/Course";
 import Student from "./pages/Student";
-import Teacher from "./pages/Teacher";
+
 import Navigation from "./components/Navigation";
-import Profile from "./pages/Profile";
+import Profile from "./components/shared/Profile";
 import Management from "./pages/Management";
 import "./styles/App.css";
-import DashBoard from "./pages/Teacher";
+import DashBoard from "./pages/Dashboard";
 
 function App() {
 	const ROLES = {
@@ -47,7 +47,6 @@ function App() {
 					</Route>
 
 					<Route element={<RequireAuth allowedRoles={[ROLES.Teacher]} />}>
-						<Route path="/teacher" element={<Teacher />} />
 						<Route path="/management" element={<Management />} />
 					</Route>
 

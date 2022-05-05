@@ -67,9 +67,11 @@ function Navigation() {
 							</NavLink>
 						</li>
 					)}
-					<li>
-						<img src={user?.avatar} alt="" />
-					</li>
+					{user && (
+						<li>
+							<img className="nav-avatar" src={user?.avatar} alt="avatar" />
+						</li>
+					)}
 					<li>
 						<span className="toggle" onClick={onLogout}>
 							{toggleLabel}

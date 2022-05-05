@@ -1,0 +1,78 @@
+.dashboard {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: 1fr;
+	grid-column-gap: 16px;
+	grid-row-gap: 0px;
+	height: 100vh;
+	margin-top: 80px;
+	text-align: center;
+	padding: 24px;
+}
+.profile-img {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	padding: 0;
+	margin: 4px;
+	border-radius: 50%;
+}
+.list {
+	/* border: 1px solid gray; */
+	border-radius: 12px;
+	margin-bottom: 24px;
+	text-align: left;
+}
+
+.card-group {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(1, 1fr);
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+	/* padding: 48px; */
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	width: 320px;
+	height: 180px;
+	margin: 8px;
+	padding: 4px;
+	border-radius: 25px;
+}
+
+.card-img {
+	display: inline-block;
+	width: 200px;
+	height: 100px;
+	object-fit: cover;
+	padding: 0;
+	margin: 4px;
+	/* border-radius: 50%; */
+}
+.student-card-avatar {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	padding: 0;
+	margin: 4px;
+	border-radius: 50%;
+}
+.card-img:hover {
+	transform: scale(1.5);
+}
+.card-price {
+	font-size: 24px;
+}
+.card-info {
+	color: #474646;
+}
+.card-info:hover {
+	color: #e3b345;
+}

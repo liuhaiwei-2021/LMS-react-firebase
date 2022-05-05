@@ -4,10 +4,10 @@ export default function CourseCard({ course }) {
 	const { id, name, imgURL, createdBy, updated } = course;
 	return (
 		<Link to={`/courses/${id}`}>
-			<div className="course-card">
-				<img className="course-card-img" src={imgURL} alt="course-card" />
-				<div className="course-card-info">
-					<h3 className="course-card-title">{name}</h3>
+			<div className="card">
+				<img className="card-img" src={imgURL} alt="card" />
+				<div className="card-info">
+					<p className="card-title">{name}</p>
 					<p>Created By: {createdBy}</p>
 				</div>
 			</div>

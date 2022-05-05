@@ -8,21 +8,17 @@ export function UserProvider({ children }) {
 
 	const storageKey = "user";
 
-	// Methods
-	function loadData() {
-		const rawData = localStorage.getItem(storageKey);
-		const parsedData = JSON.parse(rawData) || [];
-		console.log(parsedData);
-
-		setUser(parsedData);
-	}
+	let person = localStorage.getItem(storageKey);
+	console.log();
 
 	function saveData() {
 		const data = JSON.stringify(user);
 		localStorage.setItem(storageKey, data);
 	}
-	useEffect(() => loadData(), []);
-	useEffect(() => saveData(), [user]);
+
+	useEffect(() => saveData());
+
+	// Methods
 
 	return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 }

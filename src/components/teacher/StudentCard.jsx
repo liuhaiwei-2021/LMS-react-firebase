@@ -1,9 +1,10 @@
 export default function CourseCard({ student }) {
-	const { name } = student;
+	const { name, avatar } = student;
 	return (
-		<div className="course-card">
-			<div className="course-card-info">
-				<h3 className="course-card-title">{name}</h3>
+		<div className="card">
+			<div className="card-info">
+				<img className="student-card-avatar" src={avatar} alt="" />
+				<p className="card-title">{name}</p>
 			</div>
 		</div>
 	);
