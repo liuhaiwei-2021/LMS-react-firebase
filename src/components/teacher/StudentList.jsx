@@ -3,7 +3,6 @@ import StudentCard from "./StudentCard";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../scripts/Loader";
 import Error from "../shared/Error";
-import "../../styles/CourseList.css";
 
 export default function StudentList() {
 	const { data: users, loading, error } = useFetch("users");

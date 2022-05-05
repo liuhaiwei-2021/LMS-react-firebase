@@ -12,12 +12,8 @@ export default function Hero() {
 				<h1 className="hero-title">Mind Match</h1>
 				<img src="/images/logo.png" alt="logo" />
 				<h3 className="slogan">Unlock the power of you</h3>
-				<button className="view-btn" onClick={() => navigate("/signup")}>
-					Sign Up
-				</button>
-				<button className="view-btn" onClick={() => navigate("/login")}>
-					Log In
-				</button>
+				<h4>Get job-ready for an in-demand career </h4>
+				<p>Break into a new field like Frontend or Backend</p>
 			</div>
 		</section>
 	);

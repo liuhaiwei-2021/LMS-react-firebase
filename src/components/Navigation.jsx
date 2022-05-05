@@ -17,10 +17,12 @@ function Navigation() {
 	const { user, setUser } = useUser();
 
 	const admin = user?.roles?.find((role) => role === 2);
+	console.log(user);
 
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = user ? "LOG UT" : "";
+	const toggleLabel = user ? "Log Ut" : "";
+	console.log(user);
 
 	// Methods
 	async function onLogout() {
@@ -67,16 +69,27 @@ function Navigation() {
 							</NavLink>
 						</li>
 					)}
-					{user && (
-						<li>
-							<img className="nav-avatar" src={user?.avatar} alt="avatar" />
-						</li>
-					)}
 					<li>
 						<span className="toggle" onClick={onLogout}>
 							{toggleLabel}
 						</span>
 					</li>
+
+					{!user && (
+						<li>
+							<NavLink className="nav-link" to="/signup" exact="true">
+								Sign Up
+							</NavLink>
+						</li>
+					)}
+
+					{!user && (
+						<li>
+							<NavLink className="nav-link" to="/login" exact="true">
+								Log In
+							</NavLink>
+						</li>
+					)}
 				</ul>
 			</div>
 		</div>

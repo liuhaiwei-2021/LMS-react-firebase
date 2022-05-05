@@ -6,7 +6,6 @@ import useFetch from "../../hooks/useFetch.js";
 import CourseCard from "./CourseCard";
 import Loader from "../../scripts/Loader";
 import Error from "./Error";
-import "../../styles/CourseList.css";
 
 export default function CourseList() {
 	//Global state

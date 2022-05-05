@@ -16,13 +16,12 @@ import "../styles/SignUp.css";
 
 export default function LogIn({}) {
 	//Global state
-	const { setUID } = useAuth();
+	const { setUID, loggedIn, setLoggedIn } = useAuth();
 	const { user, setUser } = useUser();
 
 	// Local state
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	// const [status, setStatus] = useState(0);
 
 	//properties
 	const navigation = useNavigate();
@@ -44,9 +43,10 @@ export default function LogIn({}) {
 		const payload = await readDocument("users", uid);
 		console.log("login payload user", payload.data);
 		setUser(payload.data);
+		setLoggedIn(true);
 		setEmail("");
 		setPassword("");
-		navigation(from, { replace: true });
+		// navigation(from, { replace: true });
 		navigation("/dashboard");
 	}
 
