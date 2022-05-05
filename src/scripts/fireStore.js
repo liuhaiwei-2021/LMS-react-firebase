@@ -39,17 +39,18 @@ export async function createDocumentWithId(path, id, data) {
 
 // -- Read
 export async function readDocument(path, id) {
-	const payload = { data: undefined, error: false };
+	const payload = { data: {}, error: null, loading: true };
 
 	try {
 		const documentPath = doc(fireStore, path, id);
 		const document = await getDoc(documentPath);
 
 		payload.data = document.data();
-		console.log("firestore read document", document.data());
+		payload.loading = false;
+		console.log("firestore read document", payload.data);
 	} catch (error) {
-		payload.error = true;
-		payload.data = error;
+		payload.error = error;
+		payload.loading = false;
 	}
 	console.log("firestore read payload", payload);
 	return payload;

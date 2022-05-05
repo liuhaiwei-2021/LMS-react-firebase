@@ -13,8 +13,10 @@ import "../styles/Navigation.css";
 
 function Navigation() {
 	//Global state
-	const { loggedIn, setLoggedIn } = useAuth();
+	const { setLoggedIn } = useAuth();
 	const { user, setUser } = useUser();
+	console.log("navigation", user?.roles);
+	const admin = user?.roles.find((role) => role === 2);
 
 	//properties
 	const navigation = useNavigate();
@@ -56,10 +58,15 @@ function Navigation() {
 							Profile
 						</NavLink>
 					</li>
-					<li className="nav-item">
-						<NavLink className="nav-link" to="/teacher" exact="true">
-							Management
-						</NavLink>
+					{admin && (
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/management" exact="true">
+								Management
+							</NavLink>
+						</li>
+					)}
+					<li>
+						<img src={user?.avatar} alt="" />
 					</li>
 					<li>
 						<span className="toggle" onClick={onLogout}>

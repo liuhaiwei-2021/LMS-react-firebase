@@ -16,9 +16,8 @@ import "../styles/SignUp.css";
 
 export default function LogIn({}) {
 	//Global state
-	const { auth, setAuth, uid, setUID } = useAuth();
+	const { setUID } = useAuth();
 	const { user, setUser } = useUser();
-	const { name, roles } = user;
 
 	// Local state
 	const [email, setEmail] = useState("");
@@ -38,27 +37,17 @@ export default function LogIn({}) {
 		console.log("login payload", payload);
 		setUID(uid);
 		if (uid) onSucess(uid);
-		if (errMessage != "") onFail(errMessage);
+		if (errMessage !== "") onFail(errMessage);
 	}
 
 	async function onSucess(uid) {
 		const payload = await readDocument("users", uid);
 		console.log("login payload user", payload.data);
 		setUser(payload.data);
-		// const role = user.roles;
-		// console.log("onSucess login", payload);
-		// setLoggedIn(true);
-		// console.log("user", user);
-		// const auth = setAuth({ user, role });
-		// console.log("auth", auth);
-
-		const roles = payload?.data?.roles;
-		// setAuth({ user, roles });
 		setEmail("");
 		setPassword("");
 		navigation(from, { replace: true });
-		// navigation("/teacher");
-		// user.isTeacher ? navigation("/teacher") : navigation("/student");
+		navigation("/");
 	}
 
 	function onFail(errMessage) {
