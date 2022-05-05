@@ -46,11 +46,12 @@ export async function readDocument(path, id) {
 		const document = await getDoc(documentPath);
 
 		payload.data = document.data();
+		console.log("firestore read document", document.data());
 	} catch (error) {
 		payload.error = true;
 		payload.data = error;
 	}
-
+	console.log("firestore read payload", payload);
 	return payload;
 }
 

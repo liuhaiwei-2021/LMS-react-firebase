@@ -1,6 +1,6 @@
 // NPM packages
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 // Project files
 import { loginUser } from "../scripts/firebaseAuth";
@@ -14,10 +14,11 @@ import firebaseErrors from "../data/firebaseErrors.json";
 import Loader from "../scripts/Loader";
 import "../styles/SignUp.css";
 
-export default function SignUp({}) {
+export default function LogIn({}) {
 	//Global state
-	const { setLoggedIn, uid, setUID } = useAuth();
+	const { auth, setAuth, uid, setUID } = useAuth();
 	const { user, setUser } = useUser();
+	const { name, roles } = user;
 
 	// Local state
 	const [email, setEmail] = useState("");
@@ -26,6 +27,8 @@ export default function SignUp({}) {
 
 	//properties
 	const navigation = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/";
 
 	// Method
 	async function onLogin(e) {
@@ -38,12 +41,23 @@ export default function SignUp({}) {
 		if (errMessage != "") onFail(errMessage);
 	}
 
-	async function onSucess(data) {
-		const payload = await readDocument("users", data);
+	async function onSucess(uid) {
+		const payload = await readDocument("users", uid);
+		console.log("login payload user", payload.data);
 		setUser(payload.data);
-		console.log("onSucess login", payload);
-		setLoggedIn(true);
-		navigation("/teacher");
+		// const role = user.roles;
+		// console.log("onSucess login", payload);
+		// setLoggedIn(true);
+		// console.log("user", user);
+		// const auth = setAuth({ user, role });
+		// console.log("auth", auth);
+
+		const roles = payload?.data?.roles;
+		// setAuth({ user, roles });
+		setEmail("");
+		setPassword("");
+		navigation(from, { replace: true });
+		// navigation("/teacher");
 		// user.isTeacher ? navigation("/teacher") : navigation("/student");
 	}
 

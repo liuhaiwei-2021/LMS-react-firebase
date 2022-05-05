@@ -42,14 +42,13 @@ export default function SignUp({}) {
 	}
 
 	async function createDocument(uid) {
-		const user = { name: name, email: email, isTeacher: false };
+		const user = { name: name, email: email, roles: "student" };
 		const document = await createDocumentWithId("users", uid, user);
 		return document;
 	}
 
 	function onSuccess(uid) {
 		setUID(uid);
-
 		navigation("/login");
 	}
 

@@ -14,11 +14,11 @@ import "../styles/Navigation.css";
 function Navigation() {
 	//Global state
 	const { loggedIn, setLoggedIn } = useAuth();
-	const { setUser } = useUser();
+	const { user, setUser } = useUser();
 
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = loggedIn ? "LOG UT" : "";
+	const toggleLabel = user ? "LOG UT" : "";
 
 	// Methods
 	async function onLogout() {
@@ -57,7 +57,7 @@ function Navigation() {
 						</NavLink>
 					</li>
 					<li className="nav-item">
-						<NavLink className="nav-link" to="management" exact="true">
+						<NavLink className="nav-link" to="/teacher" exact="true">
 							Management
 						</NavLink>
 					</li>

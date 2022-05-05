@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import LogIn from "../pages/LogIn";
 import RecoverPassword from "../pages/RecoverPassword";
 import SignUp from "../pages/SignUp";
+import Missing from "../components/Missing";
 // import NotFound from "../pages/NotFound";
 
 export default function UnloggedRoutes() {
@@ -17,6 +18,7 @@ export default function UnloggedRoutes() {
 				<Route path="/recover" element={<RecoverPassword />} />
 				<Route path="/signup" element={<SignUp />} />
 				{/* <Route path="*" element={<NotFound />} /> */}
+				<Route path="*" element={<Missing />} />
 			</Routes>
 		</div>
 	);
