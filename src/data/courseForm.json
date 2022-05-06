@@ -14,5 +14,9 @@
 	"createdBy": {
 		"label": "Created By",
 		"placeholder": "created by..."
+	},
+	"link": {
+		"label": "Link",
+		"placeholder": "link..."
 	}
 }

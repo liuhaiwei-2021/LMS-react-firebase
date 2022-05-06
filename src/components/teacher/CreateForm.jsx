@@ -3,7 +3,7 @@ import { useState } from "react";
 // project files
 import { useModal } from "../../state/ModalContext";
 import { useCourses } from "../../state/CoursesContext";
-import form from "../../data/couseForm.json";
+import form from "../../data/courseForm.json";
 import InputField from "../shared/InputField";
 import { createDocument } from "../../scripts/fireStore";
 import { createFile } from "../../scripts/cloudStorage";
@@ -17,6 +17,7 @@ export default function CreateForm() {
 	const [category, setCategory] = useState("");
 	const [imgURL, setImgURL] = useState("");
 	const [createdBy, setCreatedBy] = useState("");
+	const [link, setLink] = useState("");
 
 	const [file, setFile] = useState(null);
 	const [message, setMessage] = useState(null);
@@ -31,11 +32,10 @@ export default function CreateForm() {
 			category: category.toLowerCase(),
 			createdBy: createdBy,
 			imgURL: "",
+			link: link,
 			updated: new Date().toLocaleDateString(),
 		};
 		const path = "courses/";
-		// console.log(new Date().toLocaleDateString());
-		// const uniqueId = new Date();
 		const fileName = `${name}.png`;
 		const filePath = path + fileName;
 		const imgURL = await createFile(filePath, file);
@@ -52,9 +52,10 @@ export default function CreateForm() {
 		setModal(null);
 	}
 
-	async function onImageChoose(event) {
+	function onImageChoose(event) {
 		const file = event.target.files[0];
 		setFile(file);
+		console.log(file);
 	}
 
 	function resetForm() {
@@ -70,12 +71,14 @@ export default function CreateForm() {
 			<InputField setup={form.category} state={[category, setCategory]} />
 			<InputField setup={form.name} state={[name, setName]} />
 			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
+			<InputField setup={form.link} state={[link, setLink]} />
 
 			<div className="upload-img">
 				<label className="custom-file-upload" htmlFor="file-upload">
 					upload image:
 					<img src="/images/upload-to-cloud.png" alt="upload" />
 				</label>
+
 				<input
 					onChange={onImageChoose}
 					id="file-upload"
@@ -84,6 +87,7 @@ export default function CreateForm() {
 					accept="image/png, image/jpg"
 					required
 				/>
+				<span>{file?.name}</span>
 			</div>
 
 			<button className="form-button">Submit</button>
