@@ -15,6 +15,7 @@ export default function Profile({}) {
 			<p>Novare University</p>
 			<p>Role:{Role}</p>
 			<p>{email}</p>
+			<button className="btn-edit"> Edit</button>
 		</div>
 	);
 }

@@ -9,7 +9,7 @@ import { useUser } from "../state/UserContext";
 import { readDocument } from "../scripts/fireStore";
 
 import form from "../data/loginForm.json";
-import InputField from "../components/authentication/InputField";
+import InputField from "../components/shared/InputField";
 import firebaseErrors from "../data/firebaseErrors.json";
 import Loader from "../scripts/Loader";
 import "../styles/SignUp.css";

@@ -4,30 +4,27 @@
 .container {
 	width: 80%;
 	margin: 0 auto;
+	margin-top: 80px;
 }
 .content {
 	display: block;
 	margin: 0 auto;
 	margin-top: 72px;
 }
+h1,
+h2,
 h3,
 div {
 	margin: 0;
 	padding: 0;
 }
-.bg-red {
-	background-color: #c34944;
+.btn-edit,
+.btn-delete {
+	color: #000;
+	background-color: #f8f9fa;
+	border-color: #f8f9fa;
+	width: 6rem;
 }
-.bg-light-red {
-	background-color: #ea6f60;
-}
-.bg-yellow {
-	background-color: #e3b345;
-}
-.bg-gray {
-	background-color: #474646;
-}
-
 .loader {
 	position: absolute;
 	background: rgb(145, 144, 144);

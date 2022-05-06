@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Project files
-import InputField from "../components/authentication/InputField";
+import InputField from "../components/shared/InputField";
 import form from "../data/recoverPasswordForm.json";
 import { recoverUser } from "../scripts/firebaseAuth";
 import "../styles/RecoverPassword.css";

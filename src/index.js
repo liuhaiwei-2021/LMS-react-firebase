@@ -11,6 +11,7 @@ import { AuthProvider } from "./state/AuthContext";
 import { UserProvider } from "./state/UserContext";
 
 import { CoursesProvider } from "./state/CoursesContext";
+import { StudentsProvider } from "./state/StudentsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,9 +19,11 @@ root.render(
 		<AuthProvider>
 			<UserProvider>
 				<CoursesProvider>
-					<Routes>
-						<Route path="/*" element={<App />} />
-					</Routes>
+					<StudentsProvider>
+						<Routes>
+							<Route path="/*" element={<App />} />
+						</Routes>
+					</StudentsProvider>
 				</CoursesProvider>
 			</UserProvider>
 		</AuthProvider>

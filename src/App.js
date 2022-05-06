@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "./components/authentication/RequireAuth";
 import Unauthorized from "./components/authentication/Unauthorized";
-import Layout from "./components/Layout";
+import Layout from "./pages/Layout";
 import Navigation from "./components/shared/Navigation";
 import Course from "./components/shared/Course";
 import Profile from "./components/shared/Profile";

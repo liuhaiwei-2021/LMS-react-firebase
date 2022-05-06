@@ -10,13 +10,13 @@ import { useAuth } from "../state/AuthContext";
 
 import firebaseErrors from "../data/firebaseErrors.json";
 import form from "../data/signUpForm.json";
-import InputField from "../components/authentication/InputField";
+import InputField from "../components/shared/InputField";
 import Loader from "../scripts/Loader";
 import "../styles/SignUp.css";
 
 export default function SignUp({}) {
 	//Global state
-	const { loggedIn, setLoggedIn, uid, setUID, user, setUserx } = useAuth();
+	const { loggedIn, setLoggedIn, uid, setUID, user, setUser } = useAuth();
 
 	//Local state
 	const [name, setName] = useState("");

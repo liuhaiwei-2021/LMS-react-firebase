@@ -68,17 +68,18 @@ export async function readCollection(path) {
 
 // -- Update
 export async function updateDocument(path, data) {
-	const payload = { data: undefined, error: false };
+	const payload = { message: null, error: null, loading: true };
 
 	try {
 		const id = data.id;
 		const documentPath = doc(fireStore, path, id);
 		await setDoc(documentPath, data);
 
-		payload.data = "Succeed modifying document";
+		payload.message = "Succeed modifying document";
+		payload.loading = false;
 	} catch (error) {
-		payload.error = true;
-		payload.data = error;
+		payload.error = error;
+		payload.loading = false;
 	}
 
 	return payload;

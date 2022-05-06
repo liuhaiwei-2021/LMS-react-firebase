@@ -1,0 +1,18 @@
+{
+	"name": {
+		"label": "Name",
+		"placeholder": "Course name..."
+	},
+	"category": {
+		"label": "Category",
+		"placeholder": "category name..."
+	},
+	"imgURL": {
+		"label": "Course image",
+		"placeholder": "https://..."
+	},
+	"createdBy": {
+		"label": "Created By",
+		"placeholder": "created by..."
+	}
+}
