@@ -6,6 +6,8 @@ import form from "../../data/couseForm.json";
 import InputField from "../shared/InputField";
 import { createDocument } from "../../scripts/fireStore";
 import { createFile } from "../../scripts/cloudStorage";
+import Loader from "../../scripts/Loader";
+import Error from "../shared/Error";
 
 export default function CreateForm() {
 	const { setModal } = useModal();
@@ -15,6 +17,7 @@ export default function CreateForm() {
 	const [createdBy, setCreatedBy] = useState("");
 
 	const [file, setFile] = useState(null);
+	const [message, setMessage] = useState(null);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(true);
 	//methods
@@ -32,13 +35,14 @@ export default function CreateForm() {
 		const fileName = `${name}.png`;
 		const filePath = path + fileName;
 		const imgURL = await createFile(filePath, file);
-
 		newCourse.imgURL = imgURL;
 
 		const payload = await createDocument("/courses", newCourse);
-		const { error, loading } = payload;
+		const { message, error, loading } = payload;
+		setMessage(message);
 		setError(error);
 		setLoading(loading);
+		alert(message);
 		resetForm();
 		setModal(null);
 	}
@@ -56,6 +60,8 @@ export default function CreateForm() {
 	}
 	return (
 		<form onSubmit={onCreate} className="add-form">
+			{loading && <Loader />}
+			{error && <Error />}
 			<InputField setup={form.category} state={[category, setCategory]} />
 			<InputField setup={form.name} state={[name, setName]} />
 			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />

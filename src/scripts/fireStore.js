@@ -23,15 +23,15 @@ export async function createDocument(path, data) {
 }
 
 export async function createDocumentWithId(path, id, data) {
-	let payload = { data: undefined, error: false };
+	let payload = { message: null, error: null, loading: true };
 
 	try {
 		const documentReference = doc(fireStore, path, id);
 		await setDoc(documentReference, data);
 
-		payload = { data: `Document with id ${id} created!`, error: false };
+		payload = { message: `Document with id ${id} created!`, error: null, loading: false };
 	} catch (error) {
-		payload = { data: error, error: true };
+		payload = { message: "created failed", error: error.message, loading: false };
 	}
 
 	return payload;

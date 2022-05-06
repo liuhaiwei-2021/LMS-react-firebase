@@ -8,6 +8,8 @@ import CreateForm from "../components/teacher/CreateForm";
 import { useCourses } from "../state/CoursesContext";
 import { useStudents } from "../state/StudentsContext";
 import { useModal } from "../state/ModalContext";
+import { readDocument, deleteDocument } from "../scripts/fireStore";
+import { deleteFile } from "../scripts/cloudStorage";
 import "../styles/Management.css";
 
 export default function Management() {
@@ -19,6 +21,11 @@ export default function Management() {
 	//Local state
 	const { isOpen, setIsOpen } = useState();
 
+	async function onDelete(name, id) {
+		deleteDocument("courses", id);
+		await deleteFile(`/courses/${name}.png`);
+	}
+
 	const Courses = courses.map((course, index) => (
 		<li key={index} className="coure-item">
 			{/* <img classname="course-li-img" src={course.imgURL} alt="course-name" /> */}
@@ -26,7 +33,7 @@ export default function Management() {
 			<button className="btn-edit">
 				<img src="/images/edit.png" alt="edit" />
 			</button>
-			<button className="btn-delete">
+			<button className="btn-delete" onClick={() => onDelete(course.name, course.id)}>
 				<img src="/images/delete.png" alt="delete" />
 			</button>
 		</li>
