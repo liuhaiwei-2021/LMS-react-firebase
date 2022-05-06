@@ -54,7 +54,6 @@ export default function SignUp({}) {
 
 	function onFail(error) {
 		const message = firebaseErrors[error.code] || firebaseErrors["default"];
-		console.error(error.code);
 
 		alert(message);
 	}

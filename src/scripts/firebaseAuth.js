@@ -35,11 +35,10 @@ export async function loginUser(email, password) {
 		const userCredential = await signInWithEmailAndPassword(authentification, email, password);
 
 		payload.uid = userCredential.user.uid;
-		console.log("fireauth", payload);
+
 		payload.loading = false;
 	} catch (error) {
 		payload.errMessage = error.message;
-		console.log("fireauth error", payload.errMessage);
 		payload.loading = false;
 	}
 

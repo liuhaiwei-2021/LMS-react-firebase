@@ -24,7 +24,6 @@ export default function Management() {
 	const [loading, setLoading] = useState(false);
 
 	async function onDelete(name, id) {
-		console.log(name, id, "delete");
 		const payload = deleteDocument("courses", id);
 		const { error, loading } = payload;
 

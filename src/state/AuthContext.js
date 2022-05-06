@@ -15,7 +15,6 @@ export function AuthProvider({ children }) {
 			if (currentUser) {
 				setUID(currentUser.uid);
 				setLoggedIn(true);
-				console.log(currentUser);
 			}
 		});
 	}, []);

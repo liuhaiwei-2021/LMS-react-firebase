@@ -17,12 +17,10 @@ function Navigation() {
 	const { user, setUser } = useUser();
 
 	const admin = user?.roles?.find((role) => role === 2);
-	console.log(user);
 
 	//properties
 	const navigation = useNavigate();
 	const toggleLabel = user ? "Log Ut" : "";
-	console.log(user);
 
 	// Methods
 	async function onLogout() {
@@ -40,7 +38,6 @@ function Navigation() {
 	}
 
 	function onFail(data) {
-		console.log(data);
 		alert("logut failed");
 	}
 
