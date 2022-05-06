@@ -8,6 +8,7 @@ import { useModal } from "../state/ModalContext";
 import { useStudents } from "../state/StudentsContext";
 import Error from "../components/shared/Error";
 import CreateForm from "../components/teacher/CreateForm";
+import EditForm from "../components/teacher/EditForm";
 import { deleteFile } from "../scripts/cloudStorage";
 import { deleteDocument } from "../scripts/fireStore";
 import Loader from "../scripts/Loader";
@@ -40,7 +41,7 @@ export default function Management() {
 		<li key={index} className="coure-item">
 			<span className="course-name">{course.name}</span>
 			<span className="course-name">{course.id}</span>
-			<button className="btn-edit">
+			<button className="btn-edit" onClick={() => setModal(<EditForm course={course} />)}>
 				<img src="/images/edit.png" alt="edit" />
 			</button>
 			<button className="btn-delete" onClick={() => onDelete(course.name, course.id)}>

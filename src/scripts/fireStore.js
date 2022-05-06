@@ -77,6 +77,7 @@ export async function updateDocument(path, data) {
 
 		payload.message = "Succeed modifying document";
 		payload.loading = false;
+		console.log("updata", data);
 	} catch (error) {
 		payload.error = error;
 		payload.loading = false;
