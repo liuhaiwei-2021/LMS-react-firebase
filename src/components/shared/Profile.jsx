@@ -1,7 +1,7 @@
 //Project files
 import { useUser } from "../../state/UserContext";
 
-export default function Profile({}) {
+export default function Profile() {
 	//Global state
 	const { user } = useUser();
 	const { name, email, roles, avatar } = user;
@@ -15,7 +15,6 @@ export default function Profile({}) {
 			<p>Novare University</p>
 			<p>Role: {Role}</p>
 			<p>{email}</p>
-			{/* <button className="btn-edit"> Edit</button> */}
 		</div>
 	);
 }

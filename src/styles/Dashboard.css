@@ -1,6 +1,6 @@
 .dashboard {
 	display: grid;
-	grid-template-columns: 256px auto;
+	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 	grid-column-gap: 100px;
 	grid-row-gap: 0px;
@@ -9,20 +9,7 @@
 	padding: 24px;
 	width: 100%;
 }
-.side-bar {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-	padding: 8px 0 0 0;
-}
-.side-bar .links {
-	display: flex;
-	flex-direction: column;
-	width: 200px;
-	align-items: center;
-	justify-content: space-around;
-}
+
 .profile-img {
 	display: inline-block;
 	width: 200px;
@@ -40,7 +27,7 @@
 
 .card-group {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(1, 1fr);
 	grid-column-gap: 4px;
 	grid-row-gap: 4px;
@@ -53,7 +40,6 @@
 	justify-content: space-around;
 	width: 320px;
 	height: 180px;
-	/* margin: 4px; */
 	padding: 4px;
 	border-radius: 25px;
 }
@@ -65,6 +51,15 @@
 	object-fit: cover;
 	padding: 0;
 	margin: 4px;
+}
+.card-title {
+	font-weight: 700;
+}
+.card-builder {
+	color: #bebebe;
+}
+.card-category {
+	font-weight: 100;
 }
 .student-card-avatar {
 	display: inline-block;

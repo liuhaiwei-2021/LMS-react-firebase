@@ -1,9 +1,5 @@
 .management {
-	/* border: 0.5px solid #bebebe; */
 	margin-top: 72px;
-}
-.course-group:nth-child(2n) {
-	background-color: wheat;
 }
 
 .coure-item {
@@ -12,7 +8,6 @@
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: auto;
-	align-content: start;
 }
 
 .course-name {
@@ -35,7 +30,6 @@
 	width: 44px;
 	height: 44px;
 	border-radius: 4px;
-	/* flex: 1 0 auto; */
 	margin: 10px;
 }
 .btn-add-form {
@@ -75,10 +69,6 @@ input[type="file"] {
 	background-color: #e3b345;
 }
 
-/* .custom-file-upload:hover {
-	border: 1px solid #474646;
-} */
-
 .tab-list {
 	display: flex;
 	height: 50px;
@@ -88,21 +78,4 @@ input[type="file"] {
 	border-radius: 0px;
 	background: #fefefe;
 	border-radius: 4px;
-	/* background: linear-gradient(145deg, #f0f0f0, #cacaca);
-	box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
-}
-.tab-add .tab-delete {
-	display: inline-block;
-}
-
-.tab-add:hover {
-	color: #c34944;
-}
-
-.tab-add::after {
-	color: #e3b345;
-}
-
-.tab-delete:hover {
-	color: #c34944;
 }

@@ -1,5 +1,4 @@
 //NPM packages
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -52,6 +51,16 @@ function Navigation() {
 				</div>
 
 				<ul className="navbar-items">
+					<li>
+						<a href="https://calendar.google.com/calendar/u/0/r?tab=rc">
+							<img src="/images/google-calendar.png" alt="" />
+						</a>
+					</li>
+					<li>
+						<a href="https://slack.com/get-started#/landing">
+							<img src="/images/slack.png" alt="" />
+						</a>
+					</li>
 					{user && (
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/profile" exact="true">
