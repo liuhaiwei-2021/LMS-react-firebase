@@ -1,13 +1,14 @@
 //NPM packages
 import { useState } from "react";
 // project files
-
+import { useModal } from "../../state/ModalContext";
 import form from "../../data/couseForm.json";
 import InputField from "../shared/InputField";
-import { createDocument } from "../scripts/fireStore";
-import { createFile } from "../scripts/cloudStorage";
+import { createDocument } from "../../scripts/fireStore";
+import { createFile } from "../../scripts/cloudStorage";
 
 export default function CreateForm() {
+	const { setModal } = useModal();
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
 	const [imgURL, setImgURL] = useState("");
@@ -27,23 +28,23 @@ export default function CreateForm() {
 			imgURL: "",
 			updated: new Date().toLocaleDateString(),
 		};
-		const path = "/courses";
+		const path = "courses/";
 		const fileName = `${name}.png`;
 		const filePath = path + fileName;
 		const imgURL = await createFile(filePath, file);
 
-		newDish.imgURL = imgURL;
+		newCourse.imgURL = imgURL;
 
 		const payload = await createDocument("/courses", newCourse);
 		const { error, loading } = payload;
 		setError(error);
 		setLoading(loading);
 		resetForm();
+		setModal(null);
 	}
 
 	async function onImageChoose(event) {
 		const file = event.target.files[0];
-
 		setFile(file);
 	}
 
@@ -51,19 +52,15 @@ export default function CreateForm() {
 		setName("");
 		setCategory("");
 		setImgURL("");
-		setDescription("");
-		setPrice("");
+		setCreatedBy("");
 	}
-
 	return (
-		<form onSubmit={onCreate} className="add-form container">
+		<form onSubmit={onCreate} className="add-form">
 			<InputField setup={form.category} state={[category, setCategory]} />
 			<InputField setup={form.name} state={[name, setName]} />
-			<InputField setup={form.description} state={[description, setDescription]} />
-			<InputField setup={form.price} state={[price, setPrice]} />
-			<div className="upload-img">
-				{/* <InputField setup={form.imgURL} state={[imgURL, setImgURL]} /> */}
+			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
 
+			<div className="upload-img">
 				<label className="custom-file-upload" htmlFor="file-upload">
 					upload image:
 					<img src="/images/upload-to-cloud.png" alt="upload" />
@@ -78,7 +75,11 @@ export default function CreateForm() {
 			</div>
 
 			<button className="form-button">Submit</button>
-			<button onClick={resetForm} className="form-button">
+			<button
+				onClick={() => {
+					setModal(null);
+				}}
+				className="form-button">
 				Cancel
 			</button>
 		</form>

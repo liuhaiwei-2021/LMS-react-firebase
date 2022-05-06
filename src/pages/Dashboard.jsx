@@ -9,18 +9,21 @@ export default function DashBoard() {
 	const admin = user?.roles?.find((role) => role === 2);
 	return (
 		<div className="dashboard">
-			<div>
+			<div className="side-bar">
 				<Profile />
+				<div className="links">
+					<a href="https://calendar.google.com/calendar/u/0/r?tab=rc">
+						<img src="/images/google-calendar.png" alt="" />
+					</a>
+					<a href="https://slack.com/get-started#/landing">
+						<img src="/images/slack.png" alt="" />
+					</a>
+				</div>
 			</div>
 			<div>
 				<CourseList />
 				{admin && <StudentList />}
 			</div>
-			{/* <div>
-				<h1>teacher page</h1>
-				<CourseList />
-				{admin && <StudentList />}
-			</div> */}
 		</div>
 	);
 }

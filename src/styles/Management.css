@@ -19,11 +19,27 @@
 	width: 20rem;
 	flex: 1 0 auto;
 	margin: 10px;
+	background: #bebebe;
 }
-.btn-add .btn-edit {
-	width: 10rem;
-	flex: 1 0 auto;
+.course-li-img {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	object-fit: cover;
+	padding: 0;
+	margin: 4px;
+	border-radius: 50%;
+}
+.btn-delete,
+.btn-edit {
+	width: 44px;
+	height: 44px;
+	border-radius: 4px;
+	/* flex: 1 0 auto; */
 	margin: 10px;
+}
+.btn-add-form {
+	margin-top: 48px;
 }
 
 .add-form {
@@ -32,6 +48,9 @@
 	align-items: center;
 	justify-content: center;
 	gap: 12px;
+	width: 300px;
+	margin: 24px;
+	z-index: 2;
 }
 .form-control {
 	width: 500px;

@@ -9,11 +9,13 @@ import DashBoard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import Management from "./pages/Management";
+import Missing from "./pages/Missing";
 import RecoverPassword from "./pages/RecoverPassword";
 import SignUp from "./pages/SignUp";
+import Modal from "./components/shared/Modal";
 import "./styles/App.css";
 
-function App() {
+export default function App() {
 	const ROLES = {
 		Teacher: 2,
 		Student: 1,
@@ -22,6 +24,7 @@ function App() {
 	return (
 		<>
 			{<Navigation />}
+			<Modal />
 			<Routes>
 				<Route path="/" element={<Layout />}>
 					{/* public routes */}
@@ -43,11 +46,9 @@ function App() {
 					</Route>
 
 					{/* catch all */}
-					{/* <Route path="*" element={<Missing />} /> */}
+					<Route path="*" element={<Missing />} />
 				</Route>
 			</Routes>
 		</>
 	);
 }
-
-export default App;

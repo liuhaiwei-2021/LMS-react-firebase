@@ -12,12 +12,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 90%;
+	width: 100%;
+	padding: 24px;
 	margin: 0 auto;
 }
 .logo {
 	width: 36px;
 	height: auto;
+	margin-right: 8px;
 }
 .web-name {
 	font-weight: 200;

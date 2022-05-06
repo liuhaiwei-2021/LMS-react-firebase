@@ -12,6 +12,7 @@ import { UserProvider } from "./state/UserContext";
 
 import { CoursesProvider } from "./state/CoursesContext";
 import { StudentsProvider } from "./state/StudentsContext";
+import { ModalProvider } from "./state/ModalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,9 +21,11 @@ root.render(
 			<UserProvider>
 				<CoursesProvider>
 					<StudentsProvider>
-						<Routes>
-							<Route path="/*" element={<App />} />
-						</Routes>
+						<ModalProvider>
+							<Routes>
+								<Route path="/*" element={<App />} />
+							</Routes>
+						</ModalProvider>
 					</StudentsProvider>
 				</CoursesProvider>
 			</UserProvider>
