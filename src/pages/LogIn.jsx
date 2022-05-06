@@ -10,14 +10,12 @@ import { readDocument } from "../scripts/fireStore";
 
 import form from "../data/loginForm.json";
 import InputField from "../components/shared/InputField";
-import firebaseErrors from "../data/firebaseErrors.json";
-import Loader from "../scripts/Loader";
 import "../styles/SignUp.css";
 
-export default function LogIn({}) {
+export default function LogIn() {
 	//Global state
-	const { setUID, loggedIn, setLoggedIn } = useAuth();
-	const { user, setUser } = useUser();
+	const { setUID, setLoggedIn } = useAuth();
+	const { setUser } = useUser();
 
 	// Local state
 	const [email, setEmail] = useState("");
@@ -32,7 +30,7 @@ export default function LogIn({}) {
 	async function onLogin(e) {
 		e.preventDefault();
 		const payload = await loginUser(email, password);
-		const { uid, errMessage, loading } = payload;
+		const { uid, errMessage } = payload;
 		setUID(uid);
 		if (uid) onSucess(uid);
 		if (errMessage !== "") onFail(errMessage);
@@ -54,7 +52,6 @@ export default function LogIn({}) {
 
 	return (
 		<div className="sign-up">
-			{/* {loading && <Loader />} */}
 			<h1>Log In</h1>
 			<h2>Start choose your future today!</h2>
 			<form onSubmit={onLogin}>

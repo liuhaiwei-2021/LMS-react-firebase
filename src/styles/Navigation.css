@@ -21,6 +21,10 @@
 	height: auto;
 	margin-right: 8px;
 }
+.social {
+	width: 24px;
+	height: 24px;
+}
 .web-name {
 	font-weight: 200;
 	font-size: 30px;

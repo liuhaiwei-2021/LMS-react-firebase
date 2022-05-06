@@ -51,7 +51,9 @@ export default function Management() {
 
 	const Courses = courses.map((course, index) => (
 		<li key={index} className="coure-item">
-			<span className="course-name">{course.name}</span>
+			<span className="course-name">Name:{course.name}</span>
+			<span className="course-name">Category:{course.category}</span>
+
 			<button className="btn-edit" onClick={() => setModal(<EditForm course={course} />)}>
 				<img src="/images/edit.png" alt="edit" />
 			</button>
@@ -78,7 +80,6 @@ export default function Management() {
 			<Tabs className="tabs" defaultIndex={1}>
 				<TabList className="tab-list">
 					<Tab className="tab">Student Management</Tab>
-					<hr />
 					<Tab className="tab">Courses Management</Tab>
 				</TabList>
 
