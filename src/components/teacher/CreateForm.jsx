@@ -55,7 +55,6 @@ export default function CreateForm() {
 	function onImageChoose(event) {
 		const file = event.target.files[0];
 		setFile(file);
-		console.log(file);
 	}
 
 	function resetForm() {

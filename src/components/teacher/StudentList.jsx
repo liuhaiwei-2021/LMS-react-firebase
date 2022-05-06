@@ -15,13 +15,10 @@ export default function StudentList() {
 
 	//methods
 	useEffect(() => {
-		setStudents(users);
-	}, [users]);
+		setStudents(studentsArr);
+	});
 
-	//need fix
-	// const students = users;
-	// filter((item) => {});
-	// console.log(students);
+	const studentsArr = users.filter((user) => user.isTeacher === false);
 
 	const Students = students.map((student, index) => (
 		<StudentCard key={index} student={student} />

@@ -40,7 +40,7 @@ export default function LogIn({}) {
 
 	async function onSucess(uid) {
 		const payload = await readDocument("users", uid);
-		console.log("login payload user", payload.data);
+
 		setUser(payload.data);
 		setLoggedIn(true);
 		setEmail("");

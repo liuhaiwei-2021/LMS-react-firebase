@@ -52,7 +52,7 @@ export async function readDocument(path, id) {
 		payload.error = error;
 		payload.loading = false;
 	}
-	console.log("firestore read payload", payload);
+
 	return payload;
 }
 
@@ -77,7 +77,6 @@ export async function updateDocument(path, data) {
 
 		payload.message = "Succeed modifying document";
 		payload.loading = false;
-		console.log("updata", data);
 	} catch (error) {
 		payload.error = error;
 		payload.loading = false;
@@ -88,15 +87,13 @@ export async function updateDocument(path, data) {
 
 // -- Delete
 export async function deleteDocument(path, id) {
-	console.log("current test", id);
 	let payload = { message: null, error: null, loading: true };
 
 	try {
 		const documentPath = doc(fireStore, path, id);
 		await deleteDoc(documentPath);
-		console.log("firestore delete");
+
 		payload = { message: "Delete succesfully", error: null, loading: false };
-		console.log("firestore delete", payload);
 	} catch (error) {
 		payload = { message: "Delete failed", error: error.message, loading: false };
 	}

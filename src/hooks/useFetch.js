@@ -11,7 +11,6 @@ function useFetch(collection) {
 			try {
 				const response = await readCollection(collection);
 				setData(response);
-				console.log(data);
 				setLoading(false);
 			} catch (error) {
 				setError(error);
@@ -20,7 +19,7 @@ function useFetch(collection) {
 		}
 		fetchData(collection);
 	}, [collection]);
-	console.log("fetchData", data, error, loading);
+
 	return { data, loading, error };
 }
 

@@ -3,15 +3,15 @@ import { useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 // Project files
-import { useCourses } from "../state/CoursesContext";
-import { useModal } from "../state/ModalContext";
-import { useStudents } from "../state/StudentsContext";
 import Error from "../components/shared/Error";
 import CreateForm from "../components/teacher/CreateForm";
 import EditForm from "../components/teacher/EditForm";
 import { deleteFile } from "../scripts/cloudStorage";
 import { deleteDocument } from "../scripts/fireStore";
 import Loader from "../scripts/Loader";
+import { useCourses } from "../state/CoursesContext";
+import { useModal } from "../state/ModalContext";
+import { useStudents } from "../state/StudentsContext";
 import "../styles/Management.css";
 
 export default function Management() {
@@ -24,7 +24,6 @@ export default function Management() {
 	const [loading, setLoading] = useState(false);
 
 	async function onDelete(name, id) {
-		console.log(name, id, "delete");
 		const payload = deleteDocument("courses", id);
 		const { error, loading } = payload;
 
@@ -37,10 +36,23 @@ export default function Management() {
 		setCourses(filteredCourses);
 	}
 
+	async function onDeleteStudent(name, id) {
+		const payload = deleteDocument("users", id);
+		const { error, loading } = payload;
+
+		if (!error) alert("Deleted successfully!");
+
+		setError(error);
+		setLoading(loading);
+		await deleteFile(`/users/${name}.png`);
+		const filteredStudents = students.filter((student) => student.id !== id);
+		setStudents(filteredStudents);
+	}
+
 	const Courses = courses.map((course, index) => (
 		<li key={index} className="coure-item">
 			<span className="course-name">{course.name}</span>
-			<span className="course-name">{course.id}</span>
+			<span className="course-name">{course.category}</span>
 			<button className="btn-edit" onClick={() => setModal(<EditForm course={course} />)}>
 				<img src="/images/edit.png" alt="edit" />
 			</button>
@@ -53,7 +65,9 @@ export default function Management() {
 	const Students = students.map((student, index) => (
 		<li key={index} className="coure-item">
 			<span className="course-name">{student.name}</span>
-			<button className="btn-delete">
+			<button
+				className="btn-delete"
+				onClick={() => onDeleteStudent(student.name, student.id)}>
 				<img src="/images/delete.png" alt="delete" />
 			</button>
 		</li>

@@ -42,7 +42,13 @@ export default function SignUp({}) {
 	}
 
 	async function createDocument(uid) {
-		const user = { name: name, email: email, roles: "student" };
+		const user = {
+			name: name,
+			email: email,
+			roles: [1],
+			isTeacher: false,
+			avatar: "https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-avatar-avatars-dreamstale-lineal-dreamstale.png",
+		};
 		const document = await createDocumentWithId("users", uid, user);
 		return document;
 	}
@@ -54,7 +60,6 @@ export default function SignUp({}) {
 
 	function onFail(error) {
 		const message = firebaseErrors[error.code] || firebaseErrors["default"];
-		console.error(error.code);
 
 		alert(message);
 	}

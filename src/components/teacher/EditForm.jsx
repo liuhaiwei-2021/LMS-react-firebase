@@ -41,11 +41,8 @@ export default function EditForm({ course }) {
 	function onSucess(editedCourse) {
 		const clonedCourses = [...courses];
 		const index = clonedCourses.findIndex((course) => course.id === editedCourse.id);
-
 		clonedCourses[index] = editedCourse;
-		console.log("123456789", editedCourse);
 		setCourses(clonedCourses);
-		console.log("12345678910", clonedCourses);
 		setModal(null);
 	}
 
