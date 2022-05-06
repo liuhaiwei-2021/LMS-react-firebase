@@ -16,7 +16,7 @@ import "../styles/SignUp.css";
 
 export default function SignUp({}) {
 	//Global state
-	const { loggedIn, setLoggedIn, uid, setUID, user, setUser } = useAuth();
+	const { setUID } = useAuth();
 
 	//Local state
 	const [name, setName] = useState("");
