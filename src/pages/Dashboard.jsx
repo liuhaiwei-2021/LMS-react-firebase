@@ -10,7 +10,6 @@ export default function DashBoard() {
 	return (
 		<div className="dashboard">
 			<div className="side-bar">
-				<Profile />
 				<div className="links">
 					<a href="https://calendar.google.com/calendar/u/0/r?tab=rc">
 						<img src="/images/google-calendar.png" alt="" />

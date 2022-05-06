@@ -14,9 +14,13 @@
 h1,
 h2,
 h3,
+p,
 div {
 	margin: 0;
 	padding: 0;
+}
+p {
+	margin: 2px 0;
 }
 .btn-add,
 .btn-edit,

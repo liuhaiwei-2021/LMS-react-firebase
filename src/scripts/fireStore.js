@@ -8,15 +8,15 @@ import { fireStore } from "./firebase";
 // Methods
 // -- Create
 export async function createDocument(path, data) {
-	let payload = { data: undefined, error: false };
+	let payload = { message: null, error: null, loading: true };
 
 	try {
 		const documentPath = collection(fireStore, path);
-		const document = await addDoc(documentPath, data);
+		await addDoc(documentPath, data);
 
-		payload = { data: document.id, error: false };
+		payload = { message: "Document created!", error: null, loading: false };
 	} catch (error) {
-		payload = { data: error, error: true };
+		payload = { message: "created failed", error: error.message, loading: false };
 	}
 
 	return payload;
@@ -87,16 +87,17 @@ export async function updateDocument(path, data) {
 
 // -- Delete
 export async function deleteDocument(path, id) {
-	const payload = { data: undefined, error: false };
+	console.log("current test", id);
+	let payload = { message: null, error: null, loading: true };
 
 	try {
 		const documentPath = doc(fireStore, path, id);
-
 		await deleteDoc(documentPath);
-		payload.data = "Succeed deleting document";
+		console.log("firestore delete");
+		payload = { message: "Delete succesfully", error: null, loading: false };
+		console.log("firestore delete", payload);
 	} catch (error) {
-		payload.error = true;
-		payload.data = error;
+		payload = { message: "Delete failed", error: error.message, loading: false };
 	}
 
 	return payload;

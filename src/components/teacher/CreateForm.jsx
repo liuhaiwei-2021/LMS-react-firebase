@@ -2,6 +2,7 @@
 import { useState } from "react";
 // project files
 import { useModal } from "../../state/ModalContext";
+import { useCourses } from "../../state/CoursesContext";
 import form from "../../data/couseForm.json";
 import InputField from "../shared/InputField";
 import { createDocument } from "../../scripts/fireStore";
@@ -11,6 +12,7 @@ import Error from "../shared/Error";
 
 export default function CreateForm() {
 	const { setModal } = useModal();
+	const { courses, setCourses } = useCourses();
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
 	const [imgURL, setImgURL] = useState("");
@@ -19,7 +21,7 @@ export default function CreateForm() {
 	const [file, setFile] = useState(null);
 	const [message, setMessage] = useState(null);
 	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 	//methods
 	async function onCreate(e) {
 		e.preventDefault();
@@ -32,6 +34,8 @@ export default function CreateForm() {
 			updated: new Date().toLocaleDateString(),
 		};
 		const path = "courses/";
+		// console.log(new Date().toLocaleDateString());
+		// const uniqueId = new Date();
 		const fileName = `${name}.png`;
 		const filePath = path + fileName;
 		const imgURL = await createFile(filePath, file);
@@ -42,6 +46,7 @@ export default function CreateForm() {
 		setMessage(message);
 		setError(error);
 		setLoading(loading);
+		setCourses([...courses, newCourse]);
 		alert(message);
 		resetForm();
 		setModal(null);
@@ -77,6 +82,7 @@ export default function CreateForm() {
 					className="file-upload"
 					type="file"
 					accept="image/png, image/jpg"
+					required
 				/>
 			</div>
 

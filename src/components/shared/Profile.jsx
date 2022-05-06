@@ -11,9 +11,9 @@ export default function Profile({}) {
 	return (
 		<div className="container content">
 			<img className="profile-img" src={avatar} alt="avatar" />
-			<h1>{name}</h1>
+			<h4>{name}</h4>
 			<p>Novare University</p>
-			<p>Role:{Role}</p>
+			<p>Role: {Role}</p>
 			<p>{email}</p>
 			{/* <button className="btn-edit"> Edit</button> */}
 		</div>
