@@ -20,6 +20,7 @@ export default function Management() {
 	const { courses, setCourses } = useCourses();
 	const { setModal } = useModal();
 
+	//local state
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 
