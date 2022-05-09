@@ -75,10 +75,7 @@ export default function CreateForm() {
 			<InputField setup={form.link} state={[link, setLink]} />
 
 			<div className="upload-img">
-				<label className="custom-file-upload" htmlFor="file-upload">
-					upload image:
-					<img src="/images/upload-to-cloud.png" alt="upload" />
-				</label>
+				<label className="custom-file-upload" htmlFor="file-upload"></label>
 
 				<input
 					onChange={onImageChoose}
@@ -88,7 +85,6 @@ export default function CreateForm() {
 					accept="image/png, image/jpg"
 					required
 				/>
-				<span>{file?.name}</span>
 			</div>
 
 			<button className="form-button">Submit</button>

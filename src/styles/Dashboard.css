@@ -7,7 +7,7 @@
 	height: 100vh;
 	margin-top: 72px;
 	padding: 24px;
-	width: 100%;
+	width: 80%;
 }
 
 .profile-img {
@@ -46,8 +46,8 @@
 
 .card-img {
 	display: inline-block;
-	width: 160px;
-	height: 80px;
+	width: 120px;
+	height: 120px;
 	object-fit: cover;
 	padding: 0;
 	margin: 4px;

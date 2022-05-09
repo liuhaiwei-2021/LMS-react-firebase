@@ -87,16 +87,6 @@ export async function updateDocument(path, data) {
 
 // -- Delete
 export async function deleteDocument(path, id) {
-	let payload = { message: null, error: null, loading: true };
-
-	try {
-		const documentPath = doc(fireStore, path, id);
-		await deleteDoc(documentPath);
-
-		payload = { message: "Delete succesfully", error: null, loading: false };
-	} catch (error) {
-		payload = { message: "Delete failed", error: error.message, loading: false };
-	}
-
-	return payload;
+	const documentPath = doc(fireStore, path, id);
+	await deleteDoc(documentPath);
 }

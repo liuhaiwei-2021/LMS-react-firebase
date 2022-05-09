@@ -7,7 +7,7 @@ export default function DashBoard() {
 	const { user } = useUser();
 	const admin = user?.roles?.find((role) => role === 2);
 	return (
-		<div className="dashboard">
+		<div className="dashboard container">
 			<div>
 				<CourseList />
 				{admin && <StudentList />}

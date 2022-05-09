@@ -60,6 +60,7 @@ export default function EditForm({ course }) {
 			<InputField setup={form.link} state={[link, setLink]} />
 			<InputField setup={form.imgURL} state={[imgURL, setImgURL]} />
 			<button>Edit existing item</button>
+			<button onClick={() => setModal(null)}>Cancel</button>
 		</form>
 	);
 }

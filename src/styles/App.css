@@ -30,6 +30,7 @@ p {
 	color: #000;
 	background-color: #f8f9fa;
 	border-color: #f8f9fa;
+	border-radius: 8px;
 }
 .loader {
 	position: absolute;

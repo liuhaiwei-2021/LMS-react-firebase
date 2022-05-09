@@ -5,7 +5,7 @@
 		"type": "text"
 	},
 	"email": {
-		"label": "E-mail",
+		"label": "Email",
 		"placeholder": "emailadress@mail.com",
 		"type": "email"
 	},

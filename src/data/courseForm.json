@@ -1,22 +1,27 @@
 {
 	"name": {
 		"label": "Name",
-		"placeholder": "Course name..."
+		"placeholder": "Course name...",
+		"required": true
 	},
 	"category": {
 		"label": "Category",
-		"placeholder": "category name..."
+		"placeholder": "category name...",
+		"required": true
 	},
 	"imgURL": {
 		"label": "Course image",
-		"placeholder": "https://..."
+		"placeholder": "https://...",
+		"required": true
 	},
 	"createdBy": {
 		"label": "Created By",
-		"placeholder": "created by..."
+		"placeholder": "created by...",
+		"required": true
 	},
 	"link": {
 		"label": "Link",
-		"placeholder": "link..."
+		"placeholder": "link...",
+		"required": true
 	}
 }

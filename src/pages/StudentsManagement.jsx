@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // Project files
 import Error from "../components/shared/Error";
+import StudentCard from "../components/teacher/StudentCard";
 import { deleteDocument } from "../scripts/fireStore";
 import Loader from "../scripts/Loader";
 import { useStudents } from "../state/StudentsContext";
@@ -29,24 +30,23 @@ export default function StudentsManagement() {
 	}
 
 	const Students = students.map((student, index) => (
-		<li key={index} className="coure-item">
-			<span className="course-name">{student.name}</span>
+		<div key={index} className="management-item">
+			<StudentCard student={student} />
+
+			<p className="course-name">{student.email}</p>
 			<button
 				className="btn-delete"
 				onClick={() => onDeleteStudent(student.name, student.id)}>
 				<img src="/images/delete.png" alt="delete" />
 			</button>
-		</li>
+		</div>
 	));
 
 	return (
 		<div className="management container">
 			{loading && <Loader />}
 			{error && <Error />}
-
-			<h1 className="tab">Student Management</h1>
-
-			<ul className="course-group">{Students}</ul>
+			<div className="management-group">{Students}</div>
 		</div>
 	);
 }

@@ -19,7 +19,7 @@ function Navigation() {
 
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = user ? "Log Ut" : "";
+	const toggleLabel = user ? "Log Out" : "";
 
 	// Methods
 	async function onLogout() {
@@ -65,13 +65,7 @@ function Navigation() {
 							</a>
 						</li>
 					)}
-					{user && (
-						<li className="nav-item">
-							<NavLink className="nav-link" to="/profile" exact="true">
-								Profile
-							</NavLink>
-						</li>
-					)}
+
 					{user && (
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/dashboard" exact="true">
@@ -93,8 +87,15 @@ function Navigation() {
 							</NavLink>
 						</li>
 					)}
+					{user && (
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/profile" exact="true">
+								Profile
+							</NavLink>
+						</li>
+					)}
 					<li>
-						<span className="toggle" onClick={onLogout}>
+						<span className="logut" onClick={onLogout}>
 							{toggleLabel}
 						</span>
 					</li>

@@ -16,7 +16,14 @@ export async function createFile(filePath, file) {
 
 // -- Delete
 export async function deleteFile(filePath) {
-	const fileReference = ref(cloudStorage, filePath);
+	let payload = { error: null, loading: true };
+	try {
+		const fileReference = ref(cloudStorage, filePath);
 
-	await deleteObject(fileReference);
+		await deleteObject(fileReference);
+		payload = { error: null, loading: false };
+	} catch (error) {
+		payload = { error: error, loading: false };
+	}
+	return payload;
 }

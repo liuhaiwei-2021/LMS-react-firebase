@@ -1,20 +1,30 @@
 .management {
-	margin-top: 72px;
-}
-
-.coure-item {
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: auto;
+	flex-direction: column;
+	margin-top: 96px;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+}
+.management-group {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(1, 1fr);
+	grid-column-gap: 8px;
+	grid-row-gap: 8px;
 }
 
-.course-name {
+.management-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.management-item-email {
 	width: 20rem;
 	flex: 1 0 auto;
 	margin: 10px;
-	background: #bebebe;
 }
 .course-li-img {
 	display: inline-block;
@@ -25,15 +35,19 @@
 	margin: 4px;
 	border-radius: 50%;
 }
+.btn-group {
+	margin-top: 8px;
+}
 .btn-delete,
 .btn-edit {
 	width: 44px;
 	height: 44px;
-	border-radius: 4px;
+	border-radius: 8px;
 	margin: 10px;
 }
-.btn-add-form {
+.btn-add {
 	margin-top: 48px;
+	width: 250px;
 }
 
 .add-form,
@@ -54,28 +68,4 @@
 .form-label {
 	display: block;
 	align-self: flex-start;
-}
-input[type="file"] {
-	display: none;
-}
-.custom-file-upload {
-	display: inline-block;
-	padding: 6px 12px;
-	cursor: pointer;
-}
-.btn-upload {
-	margin-top: 12px;
-	border: none;
-	background-color: #e3b345;
-}
-
-.tab-list {
-	display: flex;
-	height: 50px;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
-	border-radius: 0px;
-	background: #fefefe;
-	border-radius: 4px;
 }

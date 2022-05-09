@@ -3,7 +3,7 @@ import RequireAuth from "./components/authentication/RequireAuth";
 import Unauthorized from "./components/authentication/Unauthorized";
 import Layout from "./pages/Layout";
 import Navigation from "./components/shared/Navigation";
-import Course from "./components/shared/Course";
+import Course from "./pages/Course";
 import Profile from "./components/shared/Profile";
 import DashBoard from "./pages/Dashboard";
 import Home from "./pages/Home";

@@ -6,40 +6,33 @@
 }
 .course-img {
 	display: inline-block;
-	width: 320px;
-	height: 180px;
+	width: 300px;
+	height: 300px;
 	object-fit: cover;
 	padding: 0;
 	margin: 4px;
 }
 .course-info {
 	width: 60%;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	text-align: center;
 }
 .course-title {
 	font-weight: bold;
 	font-size: 24px;
 }
 
-.dish-card-info {
-	color: #474646;
-}
-.dish-card-info:hover {
-	color: #e3b345;
-}
-.go-back-button,
-.delete-button {
-	display: inline-block;
+.go-back-btn {
+	display: block;
 	border: none;
 	width: 200px;
 	height: 50px;
+	margin-top: 24px;
 	border-radius: 50px;
-	background: #e0e0e0;
-	box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-}
-.delete-button {
-	background: #c34944;
 }
 
-.go-back-button:hover {
+.go-back-btn:hover {
 	background-color: #e3b345;
 }
