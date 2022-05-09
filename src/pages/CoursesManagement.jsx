@@ -1,6 +1,5 @@
 // NPM package
 import { useState } from "react";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 // Project files
 import Error from "../components/shared/Error";
@@ -11,12 +10,10 @@ import { deleteDocument } from "../scripts/fireStore";
 import Loader from "../scripts/Loader";
 import { useCourses } from "../state/CoursesContext";
 import { useModal } from "../state/ModalContext";
-import { useStudents } from "../state/StudentsContext";
 import "../styles/Management.css";
 
-export default function Management() {
+export default function CoursesManagement() {
 	//Global state
-	const { students, setStudents } = useStudents();
 	const { courses, setCourses } = useCourses();
 	const { setModal } = useModal();
 
@@ -37,19 +34,6 @@ export default function Management() {
 		setCourses(filteredCourses);
 	}
 
-	async function onDeleteStudent(name, id) {
-		const payload = deleteDocument("users", id);
-		const { error, loading } = payload;
-
-		if (!error) alert("Deleted successfully!");
-
-		setError(error);
-		setLoading(loading);
-		await deleteFile(`/users/${name}.png`);
-		const filteredStudents = students.filter((student) => student.id !== id);
-		setStudents(filteredStudents);
-	}
-
 	const Courses = courses.map((course, index) => (
 		<li key={index} className="coure-item">
 			<span className="course-name">Name:{course.name}</span>
@@ -64,36 +48,15 @@ export default function Management() {
 		</li>
 	));
 
-	const Students = students.map((student, index) => (
-		<li key={index} className="coure-item">
-			<span className="course-name">{student.name}</span>
-			<button
-				className="btn-delete"
-				onClick={() => onDeleteStudent(student.name, student.id)}>
-				<img src="/images/delete.png" alt="delete" />
-			</button>
-		</li>
-	));
 	return (
 		<div className="management container">
 			{loading && <Loader />}
 			{error && <Error />}
-			<Tabs className="tabs" defaultIndex={1}>
-				<TabList className="tab-list">
-					<Tab className="tab">Student Management</Tab>
-					<Tab className="tab">Courses Management</Tab>
-				</TabList>
-
-				<TabPanel>
-					<ul className="course-group">{Students}</ul>
-				</TabPanel>
-				<TabPanel>
-					<ul className="course-group">{Courses}</ul>
-					<button className="btn-add" onClick={() => setModal(<CreateForm />)}>
-						+Add a new course
-					</button>
-				</TabPanel>
-			</Tabs>
+			<h1 className="tab">Courses Management</h1>
+			<ul className="course-group">{Courses}</ul>
+			<button className="btn-add" onClick={() => setModal(<CreateForm />)}>
+				+Add a new course
+			</button>
 		</div>
 	);
 }

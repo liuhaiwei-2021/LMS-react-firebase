@@ -1,4 +1,3 @@
-//NPM packages
 import { useEffect } from "react";
 
 //Project files
@@ -13,10 +12,12 @@ export default function StudentList() {
 	const { students, setStudents } = useStudents();
 	const { data: users, loading, error } = useFetch("users");
 
-	//properties
-	const studentsArr = users.filter((user) => user.isTeacher === false);
+	useEffect(() => {
+		const studentsArr = users.filter((user) => user.isTeacher === false);
+		setStudents(studentsArr);
+	}, [users]);
 
-	const Students = studentsArr.map((student, index) => (
+	const Students = students.map((student, index) => (
 		<StudentCard key={index} student={student} />
 	));
 

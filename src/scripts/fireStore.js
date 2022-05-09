@@ -16,7 +16,7 @@ export async function createDocument(path, data) {
 
 		payload = { message: "Document created!", error: null, loading: false };
 	} catch (error) {
-		payload = { message: "created failed", error: error.message, loading: false };
+		payload = { message: "created failed", error: error, loading: false };
 	}
 
 	return payload;

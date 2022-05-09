@@ -8,7 +8,8 @@ import Profile from "./components/shared/Profile";
 import DashBoard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
-import Management from "./pages/Management";
+import CoursesManagement from "./pages/CoursesManagement";
+import StudentsManagement from "./pages/StudentsManagement";
 import Missing from "./pages/Missing";
 import RecoverPassword from "./pages/RecoverPassword";
 import SignUp from "./pages/SignUp";
@@ -42,7 +43,8 @@ export default function App() {
 					</Route>
 
 					<Route element={<RequireAuth allowedRoles={[ROLES.Teacher]} />}>
-						<Route path="/management" element={<Management />} />
+						<Route path="/courses-management" element={<CoursesManagement />} />
+						<Route path="/students-management" element={<StudentsManagement />} />
 					</Route>
 
 					{/* catch all */}

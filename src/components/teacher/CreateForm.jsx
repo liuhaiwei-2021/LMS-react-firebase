@@ -42,7 +42,9 @@ export default function CreateForm() {
 		newCourse.imgURL = imgURL;
 
 		const payload = await createDocument("/courses", newCourse);
+
 		const { message, error, loading } = payload;
+
 		setMessage(message);
 		setError(error);
 		setLoading(loading);

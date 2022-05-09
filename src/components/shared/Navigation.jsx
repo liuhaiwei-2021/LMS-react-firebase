@@ -81,8 +81,15 @@ function Navigation() {
 					)}
 					{admin && (
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/management" exact="true">
-								Management
+							<NavLink className="nav-link" to="/courses-management" exact="true">
+								Courses
+							</NavLink>
+						</li>
+					)}
+					{admin && (
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/students-management" exact="true">
+								Students
 							</NavLink>
 						</li>
 					)}
