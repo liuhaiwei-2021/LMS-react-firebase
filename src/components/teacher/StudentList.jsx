@@ -13,13 +13,10 @@ export default function StudentList() {
 	const { students, setStudents } = useStudents();
 	const { data: users, loading, error } = useFetch("users");
 
+	//properties
 	const studentsArr = users.filter((user) => user.isTeacher === false);
-	//methods
-	useEffect(() => {
-		setStudents(studentsArr);
-	}, [users]);
 
-	const Students = students.map((student, index) => (
+	const Students = studentsArr.map((student, index) => (
 		<StudentCard key={index} student={student} />
 	));
 

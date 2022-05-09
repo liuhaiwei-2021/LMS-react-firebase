@@ -1,6 +1,3 @@
-//NPM packages
-import { useNavigate } from "react-router-dom";
-
 //Project files
 import "../../styles/Hero.css";
 
@@ -13,7 +10,7 @@ export default function Hero() {
 				<img src="/images/logo.png" alt="logo" />
 				<h3 className="slogan">Unlock the power of you</h3>
 				<h4>Get job-ready for an in-demand career </h4>
-				<p>Break into a new field like Frontend or Backend</p>
+				<p>Break into a new field </p>
 			</div>
 		</section>
 	);
