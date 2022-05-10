@@ -10,6 +10,7 @@
 }
 .hero-title {
 	font-size: xx-large;
+	color: #efdc75;
 	font-weight: 400;
 	letter-spacing: 10px;
 }
@@ -17,13 +18,14 @@
 	display: block;
 	width: 100%;
 	height: 100vh;
-	object-fit: fill;
+	object-fit: cover;
 	position: absolute;
-	opacity: 0.45;
-	z-index: 1;
+	opacity: 0.35;
+	z-index: 3;
 }
 .slogan {
 	font-weight: 400;
+	color: #7198bb;
 }
 .hero-text {
 	grid-column-start: 2;
