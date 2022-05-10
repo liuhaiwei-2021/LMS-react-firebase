@@ -6,43 +6,39 @@ import { useParams, useNavigate } from "react-router-dom";
 import { readDocument } from "../scripts/fireStore";
 import "../styles/Course.css";
 
-export default function Course() {
+export default function Student() {
 	//properties
 	const { id } = useParams();
 	const navigate = useNavigate();
 
 	// Local state
-	const [course, setCourse] = useState({});
+	const [student, setStudent] = useState({});
 
 	// Methods
 	useEffect(() => {
 		async function loadData() {
-			const payload = await readDocument("courses", id);
+			const payload = await readDocument("users", id);
 			const { data, error } = payload;
 			error ? loadFail(data) : loadSucceed(data);
 		}
 		loadData();
 	}, [id]);
 	function loadSucceed(data) {
-		setCourse(data);
+		setStudent(data);
 	}
 
 	function loadFail(data) {
 		console.log(data);
 	}
 
-	const { name, imgURL, link, category, updated } = course;
+	const { name, avatar, email } = student;
 
 	return (
 		<div className="course container">
-			<img className="course-img" src={imgURL} alt="course-card" />
+			<img className="course-img" src={avatar} alt="course-card" />
 			<div className="course-info">
 				<h3 className="course-title">{name}</h3>
-				<p>Category: {category}</p>
-				<p>Updated: {updated}</p>
-				<div className="link">
-					<a href={link}>MDN: What is {name} ?</a>
-				</div>
+				<p>Email: {email}</p>
 			</div>
 			<button onClick={() => navigate(-1)} className="go-back-btn">
 				Go back

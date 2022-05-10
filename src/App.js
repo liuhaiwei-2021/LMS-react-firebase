@@ -14,6 +14,7 @@ import Missing from "./pages/Missing";
 import RecoverPassword from "./pages/RecoverPassword";
 import SignUp from "./pages/SignUp";
 import Modal from "./components/shared/Modal";
+import Student from "./pages/Student";
 import "./styles/App.css";
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
 						<Route path="/dashboard" element={<DashBoard />} />
 						<Route path="/profile" element={<Profile />} />
 						<Route path="/courses/:id" element={<Course />} />
+						<Route path="/students/:id" element={<Student />} />
 					</Route>
 
 					<Route element={<RequireAuth allowedRoles={[ROLES.Teacher]} />}>
