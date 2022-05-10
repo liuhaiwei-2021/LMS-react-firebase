@@ -1,14 +1,15 @@
 //NPM packages
 import { useState } from "react";
 // project files
-import { useModal } from "../../state/ModalContext";
-import { useCourses } from "../../state/CoursesContext";
+
 import form from "../../data/courseForm.json";
-import InputField from "../shared/InputField";
-import { createDocument } from "../../scripts/fireStore";
 import { createFile } from "../../scripts/cloudStorage";
+import { createDocument } from "../../scripts/fireStore";
 import Loader from "../../scripts/Loader";
+import { useCourses } from "../../state/CoursesContext";
+import { useModal } from "../../state/ModalContext";
 import Error from "../shared/Error";
+import InputField from "../shared/InputField";
 
 export default function CreateForm() {
 	const { setModal } = useModal();
