@@ -11,91 +11,98 @@ import { useModal } from "../../state/ModalContext";
 import Error from "../shared/Error";
 import InputField from "../shared/InputField";
 
+/**
+ * 
+ * @returns 
+ */
 export default function CreateForm() {
-	const { setModal } = useModal();
-	const { courses, setCourses } = useCourses();
-	const [name, setName] = useState("");
-	const [category, setCategory] = useState("");
-	const [imgURL, setImgURL] = useState("");
-	const [createdBy, setCreatedBy] = useState("");
-	const [link, setLink] = useState("");
+  const { setModal } = useModal();
+  const { courses, setCourses } = useCourses();
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [imgURL, setImgURL] = useState("");
+  const [createdBy, setCreatedBy] = useState("");
+  const [link, setLink] = useState("");
 
-	const [file, setFile] = useState(null);
-	const [message, setMessage] = useState(null);
-	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(false);
-	//methods
-	async function onCreate(e) {
-		e.preventDefault();
+  const [file, setFile] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-		const newCourse = {
-			name: name,
-			category: category.toLowerCase(),
-			createdBy: createdBy,
-			imgURL: "",
-			link: link,
-			updated: new Date().toLocaleDateString(),
-		};
-		const path = "courses/";
-		const fileName = `${name}.png`;
-		const filePath = path + fileName;
-		const imgURL = await createFile(filePath, file);
-		newCourse.imgURL = imgURL;
 
-		const payload = await createDocument("/courses", newCourse);
+  //methods
+  async function onCreate(e) {
+    e.preventDefault();
 
-		const { message, error, loading } = payload;
+    const newCourse = {
+      name: name,
+      category: category.toLowerCase(),
+      createdBy: createdBy,
+      imgURL: "",
+      link: link,
+      updated: new Date().toLocaleDateString(),
+    };
+    const path = "courses/";
+    const fileName = `${name}.png`;
+    const filePath = path + fileName;
+    const imgURL = await createFile(filePath, file);
+    newCourse.imgURL = imgURL;
 
-		setMessage(message);
-		setError(error);
-		setLoading(loading);
-		setCourses([...courses, newCourse]);
-		alert(message);
-		resetForm();
-		setModal(null);
-	}
+    const payload = await createDocument("/courses", newCourse);
 
-	function onImageChoose(event) {
-		const file = event.target.files[0];
-		setFile(file);
-	}
+    const { message, error, loading } = payload;
 
-	function resetForm() {
-		setName("");
-		setCategory("");
-		setImgURL("");
-		setCreatedBy("");
-	}
-	return (
-		<form onSubmit={onCreate} className="add-form">
-			{loading && <Loader />}
-			{error && <Error />}
-			<InputField setup={form.category} state={[category, setCategory]} />
-			<InputField setup={form.name} state={[name, setName]} />
-			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
-			<InputField setup={form.link} state={[link, setLink]} />
+    setMessage(message);
+    setError(error);
+    setLoading(loading);
+    setCourses([...courses, newCourse]);
+    alert(message);
+    resetForm();
+    setModal(null);
+  }
 
-			<div className="upload-img">
-				<label className="custom-file-upload" htmlFor="file-upload"></label>
+  function onImageChoose(event) {
+    const file = event.target.files[0];
+    setFile(file);
+  }
 
-				<input
-					onChange={onImageChoose}
-					id="file-upload"
-					className="file-upload"
-					type="file"
-					accept="image/png, image/jpg"
-					required
-				/>
-			</div>
+  function resetForm() {
+    setName("");
+    setCategory("");
+    setImgURL("");
+    setCreatedBy("");
+  }
+  return (
+    <form onSubmit={onCreate} className="add-form">
+      {loading && <Loader />}
+      {error && <Error />}
+      <InputField setup={form.category} state={[category, setCategory]} />
+      <InputField setup={form.name} state={[name, setName]} />
+      <InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
+      <InputField setup={form.link} state={[link, setLink]} />
 
-			<button className="form-button">Submit</button>
-			<button
-				onClick={() => {
-					setModal(null);
-				}}
-				className="form-button">
-				Cancel
-			</button>
-		</form>
-	);
+      <div className="upload-img">
+        <label className="custom-file-upload" htmlFor="file-upload"></label>
+
+        <input
+          onChange={onImageChoose}
+          id="file-upload"
+          className="file-upload"
+          type="file"
+          accept="image/png, image/jpg"
+          required
+        />
+      </div>
+
+      <button className="form-button">Submit</button>
+      <button
+        onClick={() => {
+          setModal(null);
+        }}
+        className="form-button"
+      >
+        Cancel
+      </button>
+    </form>
+  );
 }

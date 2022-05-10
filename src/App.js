@@ -17,42 +17,53 @@ import Modal from "./components/shared/Modal";
 import Student from "./pages/Student";
 import "./styles/App.css";
 
+// - 1 for not renaming App.jsx
 export default function App() {
-	const ROLES = {
-		Teacher: 2,
-		Student: 1,
-	};
+  const ROLES = {
+    Teacher: 2,
+    Student: 1,
+  };
 
-	return (
-		<>
-			{<Navigation />}
-			<Modal />
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					{/* public routes */}
-					<Route path="/" element={<Home />} />
-					<Route path="/login" element={<LogIn />} />
-					<Route path="/recover" element={<RecoverPassword />} />
-					<Route path="/signup" element={<SignUp />} />
-					<Route path="/unauthorized" element={<Unauthorized />} />
+  return (
+    <>
+      {<Navigation />}
+      <Modal />
+      <Routes>
+        {/* This part of the code, is not wrong but... */}
+        {/* if you need to add comments to explain what each route does,  */}
+        {/* is a clear sign that they can be grouped and then refactored into a separate component */}
+        <Route path="/" element={<Layout />}>
+          {/* public routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/recover" element={<RecoverPassword />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
-					{/* I want to protect these routes */}
-					<Route element={<RequireAuth allowedRoles={[ROLES.Student, ROLES.Teacher]} />}>
-						<Route path="/dashboard" element={<DashBoard />} />
-						<Route path="/profile" element={<Profile />} />
-						<Route path="/courses/:id" element={<Course />} />
-						<Route path="/students/:id" element={<Student />} />
-					</Route>
+          {/* I want to protect these routes */}
+          <Route
+            element={
+              <RequireAuth allowedRoles={[ROLES.Student, ROLES.Teacher]} />
+            }
+          >
+            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/courses/:id" element={<Course />} />
+            <Route path="/students/:id" element={<Student />} />
+          </Route>
 
-					<Route element={<RequireAuth allowedRoles={[ROLES.Teacher]} />}>
-						<Route path="/courses-management" element={<CoursesManagement />} />
-						<Route path="/students-management" element={<StudentsManagement />} />
-					</Route>
+          <Route element={<RequireAuth allowedRoles={[ROLES.Teacher]} />}>
+            <Route path="/courses-management" element={<CoursesManagement />} />
+            <Route
+              path="/students-management"
+              element={<StudentsManagement />}
+            />
+          </Route>
 
-					{/* catch all */}
-					<Route path="*" element={<Missing />} />
-				</Route>
-			</Routes>
-		</>
-	);
+          {/* catch all */}
+          <Route path="*" element={<Missing />} />
+        </Route>
+      </Routes>
+    </>
+  );
 }

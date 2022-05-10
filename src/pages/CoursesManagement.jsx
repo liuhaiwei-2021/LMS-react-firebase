@@ -13,43 +13,49 @@ import { useModal } from "../state/ModalContext";
 import "../styles/Management.css";
 
 export default function CoursesManagement() {
-	//Global state
-	const { courses, setCourses, courseDelete } = useCourses();
-	const { setModal } = useModal();
+  //Global state
+  const { courses, setCourses, courseDelete } = useCourses();
+  const { setModal } = useModal();
 
-	//properties
-	const { data, loading, error } = useFetch("courses");
+  //properties
+  const { data, loading, error } = useFetch("courses");
 
-	//methods
-	useEffect(() => {
-		setCourses(data);
-	}, [data]);
+  //methods
+  useEffect(() => {
+    setCourses(data);
+  }, [data]);
 
-	const Courses = courses.map((course) => (
-		<div key={course.id} className="management-item">
-			<CourseCard course={course} />
-			<div className="btn-group">
-				<button className="btn-edit" onClick={() => setModal(<EditForm course={course} />)}>
-					<img src="/images/edit.png" alt="edit" />
-				</button>
-				<button className="btn-delete" onClick={() => courseDelete(course.id)}>
-					<img src="/images/delete.png" alt="delete" />
-				</button>
-			</div>
-		</div>
-	));
+  // This should be a separate file.
+  // I usually prefer to create 2 different components instead of extending a existing component
+  // But in any case this should be a separate file
+  const Courses = courses.map((course) => (
+    <div key={course.id} className="management-item">
+      <CourseCard course={course} />
+      <div className="btn-group">
+        <button
+          className="btn-edit"
+          onClick={() => setModal(<EditForm course={course} />)}
+        >
+          <img src="/images/edit.png" alt="edit" />
+        </button>
+        <button className="btn-delete" onClick={() => courseDelete(course.id)}>
+          <img src="/images/delete.png" alt="delete" />
+        </button>
+      </div>
+    </div>
+  ));
 
-	return (
-		<div className="management container">
-			{loading && <Loader />}
-			{error && <Error />}
+  return (
+    <div className="management container">
+      {loading && <Loader />}
+      {error && <Error />}
 
-			<div className="management-group">{Courses}</div>
-			<div>
-				<button className="btn-add" onClick={() => setModal(<CreateForm />)}>
-					+Add a new course
-				</button>
-			</div>
-		</div>
-	);
+      <div className="management-group">{Courses}</div>
+      <div>
+        <button className="btn-add" onClick={() => setModal(<CreateForm />)}>
+          +Add a new course
+        </button>
+      </div>
+    </div>
+  );
 }

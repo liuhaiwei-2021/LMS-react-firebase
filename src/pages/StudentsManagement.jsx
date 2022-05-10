@@ -10,43 +10,44 @@ import { useStudents } from "../state/StudentsContext";
 import "../styles/Management.css";
 
 export default function StudentsManagement() {
-	//Global state
-	const { students, setStudents } = useStudents();
+  //Global state
+  const { students, setStudents } = useStudents();
 
-	//local state
-	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(false);
+  //local state
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-	async function onDeleteStudent(name, id) {
-		const payload = deleteDocument("users", id);
-		const { error, loading } = payload;
+  async function onDeleteStudent(name, id) {
+    const payload = deleteDocument("users", id);
+    const { error, loading } = payload;
 
-		if (!error) alert("Deleted successfully!");
+    if (!error) alert("Deleted successfully!");
 
-		setError(error);
-		setLoading(loading);
-		const filteredStudents = students.filter((student) => student.id !== id);
-		setStudents(filteredStudents);
-	}
+    setError(error);
+    setLoading(loading);
+    const filteredStudents = students.filter((student) => student.id !== id);
+    setStudents(filteredStudents);
+  }
 
-	const Students = students.map((student, index) => (
-		<div key={index} className="management-item">
-			<StudentCard student={student} />
+  const Students = students.map((student, index) => (
+    <div key={index} className="management-item">
+      <StudentCard student={student} />
 
-			<p className="course-name">{student.email}</p>
-			<button
-				className="btn-delete"
-				onClick={() => onDeleteStudent(student.name, student.id)}>
-				<img src="/images/delete.png" alt="delete" />
-			</button>
-		</div>
-	));
+      <p className="course-name">{student.email}</p>
+      <button
+        className="btn-delete"
+        onClick={() => onDeleteStudent(student.name, student.id)}
+      >
+        <img src="/images/delete.png" alt="delete" />
+      </button>
+    </div>
+  ));
 
-	return (
-		<div className="management container">
-			{loading && <Loader />}
-			{error && <Error />}
-			<div className="management-group">{Students}</div>
-		</div>
-	);
+  return (
+    <div className="management container">
+      {loading && <Loader />}
+      {error && <Error />}
+      <div className="management-group">{Students}</div>
+    </div>
+  );
 }
