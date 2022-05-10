@@ -2,12 +2,11 @@
 import { useEffect } from "react";
 
 // Project files
+import CourseCard from "../components/shared/CourseCard";
 import Error from "../components/shared/Error";
 import CreateForm from "../components/teacher/CreateForm";
 import EditForm from "../components/teacher/EditForm";
 import useFetch from "../hooks/useFetch";
-import CourseCard from "../components/shared/CourseCard";
-
 import Loader from "../scripts/Loader";
 import { useCourses } from "../state/CoursesContext";
 import { useModal } from "../state/ModalContext";

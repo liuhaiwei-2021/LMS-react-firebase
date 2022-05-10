@@ -10,7 +10,7 @@ import "../../styles/Navigation.css";
 
 // import Loader from "../scripts/Loader";
 
-function Navigation() {
+export default function Navigation() {
 	//Global state
 	const { setLoggedIn } = useAuth();
 	const { user, setUser } = useUser();
@@ -120,5 +120,3 @@ function Navigation() {
 		</div>
 	);
 }
-
-export default Navigation;
