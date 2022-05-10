@@ -6,4 +6,5 @@ https://docs.google.com/spreadsheets/d/1-Uz6ZqUQeQGjEDakWRh26KAI4hEY49CrMbH-bHfY
 
 ## important!!!
 Admin (teacher) email and password  haiweiliu@icloud.com 12345678
-Admin (student) email and password  student1@mail.com 12345678
+## important!!!
+common user (student) email and password  student1@mail.com 12345678
