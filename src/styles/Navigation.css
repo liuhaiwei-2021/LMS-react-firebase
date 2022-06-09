@@ -29,10 +29,10 @@
 	font-weight: 200;
 	font-size: 30px;
 	padding: 4px;
-	color: #efdc75;
+	color: #000;
 }
 .web-name:hover {
-	color: #7198bb;
+	color: #304156;
 }
 .navbar-items {
 	display: flex;
@@ -46,7 +46,7 @@ ul {
 }
 ul li a {
 	text-decoration: none;
-	color: #efdc75;
+	color: #1c1d1f;
 	padding: 10px 20px;
 	font-weight: 400;
 	font-size: 16px;
@@ -56,18 +56,18 @@ a:link {
 	text-decoration: none;
 }
 a:hover {
-	color: #7198bb;
+	color: #304156;
 }
 a:active {
-	color: #efdc75;
+	color: #d99f3e;
 }
 .nav-link:hover {
 	text-decoration: underline;
-	color: #7198bb;
+	color: #304156;
 }
 
 .logut:hover {
-	color: #7198bb;
+	color: #304156;
 }
 /* Larger than mobile */
 @media (max-width: 400px) {
