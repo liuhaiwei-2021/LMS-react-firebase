@@ -4,7 +4,6 @@ import "../../styles/Hero.css";
 export default function Hero() {
 	return (
 		<section className="hero">
-			{/* <img className="hero-image" src="/images/hero.jpeg" alt="hero" /> */}
 			<img className="hero-image" src="" alt="hero" />
 			<div className="hero-text">
 				<h1 className="hero-title">Mind Match</h1>

@@ -19,7 +19,7 @@ export default function Navigation() {
 
 	//properties
 	const navigation = useNavigate();
-	const toggleLabel = user ? "Log Out" : "";
+	const toggleLabel = user ? "Log out" : "";
 
 	// Methods
 	async function onLogout() {
@@ -111,7 +111,7 @@ export default function Navigation() {
 					{!user && (
 						<li>
 							<NavLink className="nav-link" to="/login" exact="true">
-								Log In
+								Log in
 							</NavLink>
 						</li>
 					)}
