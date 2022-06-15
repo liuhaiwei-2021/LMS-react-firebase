@@ -1,8 +1,9 @@
 //NPM packages
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 //Project file
+import FileCard from "../components/shared/FileCard";
 import { readDocument } from "../scripts/fireStore";
 import "../styles/Course.css";
 
@@ -31,7 +32,9 @@ export default function Course() {
 		console.log(data);
 	}
 
-	const { name, imgURL, link, category, updated } = course;
+	const { name, imgURL, category, updated, files } = course;
+	console.log(files);
+	// const Files = files.map((file, index) => <FileCard key={index} file={file} />);
 
 	return (
 		<div className="course container">
@@ -40,9 +43,7 @@ export default function Course() {
 				<h3 className="course-title">{name}</h3>
 				<p>Category: {category}</p>
 				<p>Updated: {updated}</p>
-				<div className="link">
-					<a href={link}>MDN: What is {name} ?</a>
-				</div>
+				{/* <div className="files">{files.length > 0 && Files}</div> */}
 			</div>
 			<button onClick={() => navigate(-1)} className="go-back-btn">
 				Go back

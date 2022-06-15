@@ -25,8 +25,8 @@ export default function CoursesManagement() {
 		setCourses(data);
 	}, [data]);
 
-	const Courses = courses.map((course) => (
-		<div key={course.id} className="management-item">
+	const Courses = courses.map((course, index) => (
+		<div key={index} className="management-item">
 			<CourseCard course={course} />
 			<div className="btn-group">
 				<button className="btn-edit" onClick={() => setModal(<EditForm course={course} />)}>

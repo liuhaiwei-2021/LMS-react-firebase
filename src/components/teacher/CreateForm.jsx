@@ -10,17 +10,21 @@ import { useCourses } from "../../state/CoursesContext";
 import { useModal } from "../../state/ModalContext";
 import Error from "../shared/Error";
 import InputField from "../shared/InputField";
+import UploadIMG from "../teacher/UploadIMG";
+import UploadFile from "../teacher/UploadFile";
 
 export default function CreateForm() {
 	const { setModal } = useModal();
 	const { courses, setCourses } = useCourses();
 	const [name, setName] = useState("");
+	const [resourseName, setResourseName] = useState("");
 	const [category, setCategory] = useState("");
 	const [imgURL, setImgURL] = useState("");
 	const [createdBy, setCreatedBy] = useState("");
-	const [link, setLink] = useState("");
 
-	const [file, setFile] = useState(null);
+	const [imgFile, setImgFile] = useState(null);
+	const [resourseFile, setResourseFile] = useState(null);
+
 	const [message, setMessage] = useState(null);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
@@ -33,14 +37,18 @@ export default function CreateForm() {
 			category: category.toLowerCase(),
 			createdBy: createdBy,
 			imgURL: "",
-			link: link,
+			files: [],
 			updated: new Date().toLocaleDateString(),
 		};
-		const path = "courses/";
-		const fileName = `${name}.png`;
-		const filePath = path + fileName;
-		const imgURL = await createFile(filePath, file);
+
+		const imgFileName = `${name}.png`;
+		const imgFilePath = "/courses/img" + imgFileName;
+		const pdfFilePath = "courses/resources" + resourseName;
+		const imgURL = await createFile(imgFilePath, imgFile);
+		const resourseFileURL = await createFile(pdfFilePath, resourseFile);
+
 		newCourse.imgURL = imgURL;
+		newCourse.files.push({ resourseName, resourseFileURL });
 
 		const payload = await createDocument("/courses", newCourse);
 
@@ -55,9 +63,16 @@ export default function CreateForm() {
 		setModal(null);
 	}
 
-	function onImageChoose(event) {
-		const file = event.target.files[0];
-		setFile(file);
+	function onImageChoose(e) {
+		const imgFile = e.target.files[0];
+		setImgFile(imgFile);
+	}
+
+	function onFileChoose(e) {
+		const file = e.target.files[0];
+		const name = e.target.files[0].name;
+		setResourseName(name);
+		setResourseFile(file);
 	}
 
 	function resetForm() {
@@ -73,20 +88,8 @@ export default function CreateForm() {
 			<InputField setup={form.category} state={[category, setCategory]} />
 			<InputField setup={form.name} state={[name, setName]} />
 			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
-			<InputField setup={form.link} state={[link, setLink]} />
-
-			<div className="upload-img">
-				<label className="custom-file-upload" htmlFor="file-upload"></label>
-
-				<input
-					onChange={onImageChoose}
-					id="file-upload"
-					className="file-upload"
-					type="file"
-					accept="image/png, image/jpg"
-					required
-				/>
-			</div>
+			<UploadIMG onImageChoose={onImageChoose} />
+			<UploadFile onFileChoose={onFileChoose} />
 
 			<button className="form-button">Submit</button>
 			<button
