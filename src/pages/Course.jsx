@@ -24,6 +24,7 @@ export default function Course() {
 		}
 		loadData();
 	}, [id]);
+
 	function loadSucceed(data) {
 		setCourse(data);
 	}
@@ -34,7 +35,7 @@ export default function Course() {
 
 	const { name, imgURL, category, updated, files } = course;
 	console.log(files);
-	// const Files = files.map((file, index) => <FileCard key={index} file={file} />);
+	const Files = files?.map((file, index) => <FileCard key={index} file={file} />);
 
 	return (
 		<div className="course container">
@@ -43,7 +44,7 @@ export default function Course() {
 				<h3 className="course-title">{name}</h3>
 				<p>Category: {category}</p>
 				<p>Updated: {updated}</p>
-				{/* <div className="files">{files.length > 0 && Files}</div> */}
+				<div className="files">{Files}</div>
 			</div>
 			<button onClick={() => navigate(-1)} className="go-back-btn">
 				Go back
