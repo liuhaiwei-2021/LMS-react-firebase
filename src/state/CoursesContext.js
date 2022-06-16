@@ -13,7 +13,11 @@ export function CoursesProvider({ children }) {
 		setCourses((prevCourses) => prevCourses.filter((course) => course.id !== id));
 	}
 
-	const values = { courses, setCourses, courseDelete };
+	const updateCourses = (newCourses) => {
+		setCourses(newCourses);
+	};
+
+	const values = { courses, setCourses, courseDelete, updateCourses };
 
 	return <CoursesContext.Provider value={values}>{children}</CoursesContext.Provider>;
 }

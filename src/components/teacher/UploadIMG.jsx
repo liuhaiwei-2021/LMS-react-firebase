@@ -2,7 +2,7 @@ export default function UploadIMG({ onImageChoose }) {
 	return (
 		<div className="upload-img">
 			<label className="custom-file-upload" htmlFor="file-upload">
-				img
+				Image:
 			</label>
 
 			<input

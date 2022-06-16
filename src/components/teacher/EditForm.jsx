@@ -1,4 +1,4 @@
-// MPM packages
+// NPM packages
 import { useState } from "react";
 
 // Project files
@@ -7,6 +7,7 @@ import form from "../../data/courseForm.json";
 import InputField from "../shared/InputField";
 import { useModal } from "../../state/ModalContext";
 import { useCourses } from "../../state/CoursesContext";
+import AddResourceForm from "./AddResourceForm";
 
 export default function EditForm({ course }) {
 	// Global state
@@ -17,8 +18,8 @@ export default function EditForm({ course }) {
 	const [name, setName] = useState(course.name);
 	const [category, setCategory] = useState(course.category);
 	const [imgURL, setImgURL] = useState(course.imgURL);
+	const [files, setFiles] = useState(course.files);
 	const [createdBy, setCreatedBy] = useState(course.createdBy);
-	const [link, setLink] = useState(course.link);
 
 	// Methods
 	async function onSubmit(e) {
@@ -30,7 +31,7 @@ export default function EditForm({ course }) {
 			category: category.toLowerCase(),
 			createdBy: createdBy,
 			imgURL: imgURL,
-			link: link,
+			files: files,
 			updated: new Date().toLocaleDateString(),
 		};
 		const isDone = updateDocument("courses", editedCourse).catch(onFail);
@@ -57,8 +58,8 @@ export default function EditForm({ course }) {
 			<InputField setup={form.category} state={[category, setCategory]} />
 			<InputField setup={form.name} state={[name, setName]} />
 			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
-			<InputField setup={form.link} state={[link, setLink]} />
 			<InputField setup={form.imgURL} state={[imgURL, setImgURL]} />
+
 			<button>Edit existing item</button>
 			<button onClick={() => setModal(null)}>Cancel</button>
 		</form>

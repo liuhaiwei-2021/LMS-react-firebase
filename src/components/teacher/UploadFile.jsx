@@ -1,10 +1,8 @@
-import React from "react";
-
 export default function UploadFile({ onFileChoose }) {
 	return (
 		<div className="upload-img">
 			<label className="custom-file-upload" htmlFor="file-upload">
-				pdf
+				Resources:
 			</label>
 
 			<input

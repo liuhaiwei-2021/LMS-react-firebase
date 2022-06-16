@@ -14,8 +14,11 @@ import UploadIMG from "../teacher/UploadIMG";
 import UploadFile from "../teacher/UploadFile";
 
 export default function CreateForm() {
+	// Global state
 	const { setModal } = useModal();
 	const { courses, setCourses } = useCourses();
+
+	// Local state
 	const [name, setName] = useState("");
 	const [resourseName, setResourseName] = useState("");
 	const [category, setCategory] = useState("");
@@ -28,6 +31,7 @@ export default function CreateForm() {
 	const [message, setMessage] = useState(null);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
+
 	//methods
 	async function onCreate(e) {
 		e.preventDefault();
@@ -43,8 +47,9 @@ export default function CreateForm() {
 
 		const imgFileName = `${name}.png`;
 		const imgFilePath = "/courses/img" + imgFileName;
-		const pdfFilePath = "courses/resources" + resourseName;
 		const imgURL = await createFile(imgFilePath, imgFile);
+
+		const pdfFilePath = "/courses/resources" + resourseName;
 		const resourseFileURL = await createFile(pdfFilePath, resourseFile);
 
 		newCourse.imgURL = imgURL;
