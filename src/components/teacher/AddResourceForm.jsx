@@ -1,36 +1,37 @@
 // NPM packages
 import { useState } from "react";
+
 // Project files
-import { useModal } from "../../state/ModalContext";
-import { useCourses } from "../../state/CoursesContext";
-import { updateDocument } from "../../scripts/fireStore";
 import { createFile } from "../../scripts/cloudStorage";
+import { updateDocument } from "../../scripts/fireStore";
 import Loader from "../../scripts/Loader";
+import { useCourses } from "../../state/CoursesContext";
+import { useModal } from "../../state/ModalContext";
 import Error from "../shared/Error";
+import UploadFile from "./UploadFile";
+import "../../styles/AddResourceForm.css";
 
 export default function AddResourceForm({ course }) {
 	// Global state
 	const { setModal } = useModal();
 	const [resourseName, setResourseName] = useState("");
 	const [resourseFile, setResourseFile] = useState(null);
+	const { courses, setCourses } = useCourses();
 
-	const { courses, setCourses, updateCourses } = useCourses();
+	//Local state
 	const [files, setFiles] = useState(course.files);
-
 	const [message, setMessage] = useState(null);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 
 	async function onSubmit(e) {
 		e.preventDefault();
-
 		const editedCourse = {
 			...course,
 			files: files,
 		};
-		const pdfFilePath = "/courses/resources" + resourseName;
-		const resourseFileURL = await createFile(pdfFilePath, resourseFile);
-
+		const filePath = "/courses/resources" + resourseName;
+		const resourseFileURL = await createFile(filePath, resourseFile);
 		editedCourse.files.push({ resourseName, resourseFileURL });
 
 		const { message, error, loading } = await updateDocument("courses", editedCourse);
@@ -59,18 +60,8 @@ export default function AddResourceForm({ course }) {
 			{loading && <Loader />}
 			{error && <Error />}
 			<h1>Add a resource</h1>
-			<label className="custom-file-upload" htmlFor="file-upload">
-				Resources:
-			</label>
 
-			<input
-				onChange={onFileChoose}
-				id="file-upload"
-				className="file-upload"
-				type="file"
-				accept=".pdf"
-				required
-			/>
+			<UploadFile onFileChoose={onFileChoose} />
 
 			<button className="form-button">Submit</button>
 			<button onClick={() => setModal(null)}>Cancel</button>

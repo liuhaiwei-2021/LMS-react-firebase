@@ -36,7 +36,7 @@ export default function CoursesManagement() {
 				<button
 					className="btn-edit"
 					onClick={() => setModal(<AddResourceForm course={course} />)}>
-					<img src="/images/edit.png" alt="edit" />
+					<img src="/images/add.png" alt="edit" />
 				</button>
 				<button className="btn-delete" onClick={() => courseDelete(course.id)}>
 					<img src="/images/delete.png" alt="delete" />
