@@ -1,7 +1,7 @@
 //NPM packages
 import { useState } from "react";
-// project files
 
+// project files
 import form from "../../data/courseForm.json";
 import { createFile } from "../../scripts/cloudStorage";
 import { createDocument } from "../../scripts/fireStore";
@@ -11,7 +11,6 @@ import { useModal } from "../../state/ModalContext";
 import Error from "../shared/Error";
 import InputField from "../shared/InputField";
 import UploadIMG from "../teacher/UploadIMG";
-import UploadFile from "../teacher/UploadFile";
 
 export default function CreateForm() {
 	// Global state
@@ -20,13 +19,10 @@ export default function CreateForm() {
 
 	// Local state
 	const [name, setName] = useState("");
-	const [resourseName, setResourseName] = useState("");
 	const [category, setCategory] = useState("");
-	const [imgURL, setImgURL] = useState("");
 	const [createdBy, setCreatedBy] = useState("");
 
 	const [imgFile, setImgFile] = useState(null);
-	const [resourseFile, setResourseFile] = useState(null);
 
 	const [message, setMessage] = useState(null);
 	const [error, setError] = useState(null);
@@ -48,23 +44,15 @@ export default function CreateForm() {
 		const imgFileName = `${name}.png`;
 		const imgFilePath = "/courses/img" + imgFileName;
 		const imgURL = await createFile(imgFilePath, imgFile);
-
-		const pdfFilePath = "/courses/resources" + resourseName;
-		const resourseFileURL = await createFile(pdfFilePath, resourseFile);
-
 		newCourse.imgURL = imgURL;
-		newCourse.files.push({ resourseName, resourseFileURL });
 
-		const payload = await createDocument("/courses", newCourse);
-
-		const { message, error, loading } = payload;
+		const { message, error, loading } = await createDocument("/courses", newCourse);
 
 		setMessage(message);
 		setError(error);
 		setLoading(loading);
 		setCourses([...courses, newCourse]);
 		alert(message);
-		resetForm();
 		setModal(null);
 	}
 
@@ -73,19 +61,6 @@ export default function CreateForm() {
 		setImgFile(imgFile);
 	}
 
-	function onFileChoose(e) {
-		const file = e.target.files[0];
-		const name = e.target.files[0].name;
-		setResourseName(name);
-		setResourseFile(file);
-	}
-
-	function resetForm() {
-		setName("");
-		setCategory("");
-		setImgURL("");
-		setCreatedBy("");
-	}
 	return (
 		<form onSubmit={onCreate} className="add-form">
 			{loading && <Loader />}
@@ -94,7 +69,6 @@ export default function CreateForm() {
 			<InputField setup={form.name} state={[name, setName]} />
 			<InputField setup={form.createdBy} state={[createdBy, setCreatedBy]} />
 			<UploadIMG onImageChoose={onImageChoose} />
-			<UploadFile onFileChoose={onFileChoose} />
 
 			<button className="form-button">Submit</button>
 			<button

@@ -64,7 +64,9 @@ export default function AddResourceForm({ course }) {
 			<UploadFile onFileChoose={onFileChoose} />
 
 			<button className="form-button">Submit</button>
-			<button onClick={() => setModal(null)}>Cancel</button>
+			<button className="form-button" onClick={() => setModal(null)}>
+				Cancel
+			</button>
 		</form>
 	);
 }
