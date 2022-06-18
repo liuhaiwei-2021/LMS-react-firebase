@@ -8,8 +8,6 @@ import { useAuth } from "../../state/AuthContext";
 import { useUser } from "../../state/UserContext";
 import "../../styles/Navigation.css";
 
-// import Loader from "../scripts/Loader";
-
 export default function Navigation() {
 	//Global state
 	const { setLoggedIn } = useAuth();
@@ -103,7 +101,7 @@ export default function Navigation() {
 					{!user && (
 						<li>
 							<NavLink className="nav-link" to="/signup" exact="true">
-								Sign Up
+								Sign up
 							</NavLink>
 						</li>
 					)}

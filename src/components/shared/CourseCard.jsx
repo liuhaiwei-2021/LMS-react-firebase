@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../../styles/CourseCard.css";
 
 export default function CourseCard({ course }) {
 	const { id, name, imgURL, createdBy, category } = course;
