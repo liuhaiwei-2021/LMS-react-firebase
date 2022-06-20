@@ -6,6 +6,7 @@ import CourseCard from "../components/shared/CourseCard";
 import Error from "../components/shared/Error";
 import CreateForm from "../components/teacher/CreateForm";
 import EditForm from "../components/teacher/EditForm";
+import AddResourceForm from "../components/teacher/AddResourceForm";
 import useFetch from "../hooks/useFetch";
 import Loader from "../scripts/Loader";
 import { useCourses } from "../state/CoursesContext";
@@ -25,12 +26,17 @@ export default function CoursesManagement() {
 		setCourses(data);
 	}, [data]);
 
-	const Courses = courses.map((course) => (
-		<div key={course.id} className="management-item">
+	const Courses = courses.map((course, index) => (
+		<div key={index} className="management-item">
 			<CourseCard course={course} />
 			<div className="btn-group">
 				<button className="btn-edit" onClick={() => setModal(<EditForm course={course} />)}>
 					<img src="/images/edit.png" alt="edit" />
+				</button>
+				<button
+					className="btn-edit"
+					onClick={() => setModal(<AddResourceForm course={course} />)}>
+					<img src="/images/add.png" alt="edit" />
 				</button>
 				<button className="btn-delete" onClick={() => courseDelete(course.id)}>
 					<img src="/images/delete.png" alt="delete" />
