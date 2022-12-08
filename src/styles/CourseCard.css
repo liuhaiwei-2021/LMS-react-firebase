@@ -1,10 +1,10 @@
 .course-img {
 	display: inline-block;
-	width: 300px;
-	height: 300px;
-	object-fit: cover;
+	/* width: 300px;
+	height: 300px; */
+	/* object-fit: cover;
 	padding: 0;
-	margin: 4px;
+	margin: 4px; */
 }
 .course-info {
 	width: 60%;
